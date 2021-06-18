@@ -21,6 +21,18 @@
     <meta property="og:image" content="%PUBLIC_URL%/logo192.png"/>
 
     <title>수정과</title>
+
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+
+        if (
+            (navigator.appName === 'Netscape' && navigator.userAgent.search('Trident') !== -1) ||
+            agent.indexOf('msie') !== -1
+        ) {
+            document.querySelector('body').innerHTML =
+                '<b>수정과는 인터넷 익스플로러를 지원하지 않습니다.<br />Chrome, Firefox, Safari, Edge 등의 브라우저를 이용해주세요.<b/>';
+        }
+    </script>
 </head>
 <body>
 <noscript>수정과 사이트를 쓰기 위해서는 자바스크립트가 필요합니다. 자바스크립트를 '켜짐'으로 바꿔주세요.</noscript>
