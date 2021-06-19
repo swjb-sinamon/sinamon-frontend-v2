@@ -25,3 +25,5 @@ yarn-error.log*
 # ide or editor settings
 /.idea
 /.vscode
+
+.env
