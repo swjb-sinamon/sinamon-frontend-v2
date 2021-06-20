@@ -9,9 +9,16 @@ import { ProfileProvider } from './hooks/useProfile';
 ReactDOM.render(
   <React.StrictMode>
     <ProfileProvider>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          style: {
+            fontSize: '14px'
+          }
+        }}
+      />
       <GlobalStyle />
       <Router />
-      <Toaster position="top-right" />
     </ProfileProvider>
   </React.StrictMode>,
   document.getElementById('root')
