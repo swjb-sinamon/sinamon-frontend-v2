@@ -23,7 +23,10 @@ Api.interceptors.response.use(
     return res;
   },
   (e) => {
-    if (!e.response || !e.response.data) return Promise.reject(e);
+    if (!e.response || !e.response.data) {
+      toast.error(Message.LATER);
+      return Promise.reject(e);
+    }
 
     const { error } = e.response.data;
 
