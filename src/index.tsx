@@ -4,12 +4,15 @@ import { Toaster } from 'react-hot-toast';
 import reportWebVitals from './reportWebVitals';
 import Router from './Router';
 import GlobalStyle from './styles/Global';
+import { ProfileProvider } from './hooks/useProfile';
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <Router />
-    <Toaster position="top-right" />
+    <ProfileProvider>
+      <GlobalStyle />
+      <Router />
+      <Toaster position="top-right" />
+    </ProfileProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
