@@ -27,6 +27,8 @@ const GlobalStyle: React.FC = () => {
           --color-fine: #4cd137;
           --color-warn: #fbc531;
           --color-bad: #e84118;
+
+          --color-disabled: hsl(0, 0%, 73%);
         }
 
         body {
