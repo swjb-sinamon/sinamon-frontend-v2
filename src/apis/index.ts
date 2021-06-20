@@ -16,7 +16,7 @@ const Message = {
 
 Api.interceptors.response.use(
   (res) => {
-    if (res.data && !res.data.success) {
+    if (!res.data || !res.data.success) {
       toast.error(Message.LATER);
     }
 
