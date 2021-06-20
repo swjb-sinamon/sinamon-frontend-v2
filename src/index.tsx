@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 import { Toaster } from 'react-hot-toast';
 import reportWebVitals from './reportWebVitals';
 import Router from './Router';
+import GlobalStyle from './styles/Global';
 
 ReactDOM.render(
   <React.StrictMode>
+    <GlobalStyle />
     <Router />
     <Toaster position="top-right" />
   </React.StrictMode>,
