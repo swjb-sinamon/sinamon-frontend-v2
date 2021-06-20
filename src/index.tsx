@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Toaster } from 'react-hot-toast';
 import reportWebVitals from './reportWebVitals';
+import Router from './Router';
 
 ReactDOM.render(
   <React.StrictMode>
-
+    <Router />
+    <Toaster position="top-right" />
   </React.StrictMode>,
   document.getElementById('root')
 );
