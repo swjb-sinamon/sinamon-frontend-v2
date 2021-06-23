@@ -7,6 +7,12 @@ const GlobalStyle: React.FC = () => {
       styles={css`
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap');
         @import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
+        @font-face {
+          font-family: 'paybooc-Bold';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+        }
 
         * {
           margin: 0;
