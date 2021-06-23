@@ -13,7 +13,7 @@ export const RoundHeading2 = styled.h2`
 `;
 
 export const RoundHeading3 = styled.h3`
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   font-family: 'NanumSquareRound', sans-serif;
 `;
@@ -29,6 +29,6 @@ export const Heading2 = styled.h2`
 `;
 
 export const Heading3 = styled.h3`
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
 `;
