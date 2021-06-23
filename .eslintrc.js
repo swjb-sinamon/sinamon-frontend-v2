@@ -12,6 +12,7 @@ module.exports = {
     'react/jsx-tag-spacing': 'off',
     'react/prop-types': 'off',
     'react/jsx-one-expression-per-line': 'off',
+    'react/jsx-props-no-spreading': 'off',
 
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
