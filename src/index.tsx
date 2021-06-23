@@ -5,20 +5,23 @@ import reportWebVitals from './reportWebVitals';
 import Router from './Router';
 import GlobalStyle from './styles/Global';
 import { ProfileProvider } from './hooks/useProfile';
+import { MealProvider } from './hooks/useMeal';
 
 ReactDOM.render(
   <React.StrictMode>
     <ProfileProvider>
-      <Toaster
-        position="top-right"
-        toastOptions={{
-          style: {
-            fontSize: '14px'
-          }
-        }}
-      />
-      <GlobalStyle />
-      <Router />
+      <MealProvider>
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            style: {
+              fontSize: '14px'
+            }
+          }}
+        />
+        <GlobalStyle />
+        <Router />
+      </MealProvider>
     </ProfileProvider>
   </React.StrictMode>,
   document.getElementById('root')
