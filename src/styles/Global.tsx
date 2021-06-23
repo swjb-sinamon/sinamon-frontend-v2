@@ -29,6 +29,8 @@ const GlobalStyle: React.FC = () => {
           --color-button-hover: #004ede;
 
           --color-subtext: #788097;
+          --color-error: #d47998;
+
           --color-gray: #dfe4ea;
 
           --color-good: #0097e6;
