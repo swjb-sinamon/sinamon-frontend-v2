@@ -8,8 +8,9 @@ const GlobalStyle: React.FC = () => {
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap');
         @import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
         @font-face {
-          font-family: 'paybooc-Bold';
-          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff') format('woff');
+          font-family: 'paybooc-ExtraBold';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-ExtraBold.woff')
+            format('woff');
           font-weight: normal;
           font-style: normal;
         }
@@ -23,7 +24,8 @@ const GlobalStyle: React.FC = () => {
         :root {
           --color-background: #fafbff;
 
-          --color-button: #0057ff;
+          --color-main: #0057ff;
+          --color-button: var(--color-main);
           --color-button-hover: #004ede;
 
           --color-subtext: #788097;
@@ -35,6 +37,8 @@ const GlobalStyle: React.FC = () => {
           --color-bad: #e84118;
 
           --color-disabled: hsl(0, 0%, 75%);
+
+          --font-logo: 'paybooc-ExtraBold';
         }
 
         body {
