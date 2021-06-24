@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
+import { useHistory } from 'react-router-dom';
 import { RoundHeading1 } from '../atoms/Typography/Heading';
 import { Gap } from '../utils/Gap';
 import { Input } from '../atoms/Form/Input';
@@ -57,6 +58,7 @@ const LoginPage: React.FC = () => {
     handleSubmit,
     reset
   } = useForm<LoginForm>();
+  const history = useHistory();
 
   const onLoginClick: SubmitHandler<LoginForm> = async (data) => {
     const { id, password } = data;
@@ -115,10 +117,12 @@ const LoginPage: React.FC = () => {
           <Gap gap={24} />
 
           <LoginButtonGroup>
-            <Button fontSize="14" onClick={handleSubmit(onLoginClick)}>
+            <Button fontSize="16" onClick={handleSubmit(onLoginClick)}>
               로그인
             </Button>
-            <Button fontSize="14">회원가입</Button>
+            <Button fontSize="16" onClick={() => history.push('/register')}>
+              회원가입
+            </Button>
           </LoginButtonGroup>
         </div>
       </div>
