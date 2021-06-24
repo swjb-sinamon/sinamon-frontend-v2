@@ -1,12 +1,6 @@
 import React from 'react';
 import { FieldError } from 'react-hook-form';
-import styled from '@emotion/styled';
-
-const InputError = styled.p`
-  color: var(--color-error);
-  font-size: 12px;
-  margin-top: 4px;
-`;
+import { InputError } from '../../atoms/Typography/Error';
 
 interface RequiredInputErrorProps {
   readonly formError: FieldError | undefined;
