@@ -39,6 +39,10 @@ Api.interceptors.response.use(
       return Promise.reject(e);
     }
 
+    if (error === ErrorMessage.USER_NOT_FOUND && window.location.pathname === '/login') {
+      return Promise.reject(e);
+    }
+
     toast.error(error);
 
     return Promise.reject(e);
