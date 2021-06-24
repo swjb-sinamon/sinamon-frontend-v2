@@ -5,7 +5,6 @@ const CheckboxStyle = styled.input`
   transform: scale(1.3);
 `;
 
-export const Checkbox: React.FC<React.InputHTMLAttributes<unknown>> = (props) => {
-  // eslint-disable-next-line react/jsx-props-no-spreading
-  return <CheckboxStyle type="checkbox" {...props} />;
-};
+export const Checkbox = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<unknown>>((props, ref) => {
+  return <CheckboxStyle type="checkbox" ref={ref} {...props} />;
+});
