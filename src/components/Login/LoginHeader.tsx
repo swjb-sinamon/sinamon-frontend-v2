@@ -18,7 +18,7 @@ const LoginHeader: React.FC = () => {
   return (
     <>
       <RoundHeading1>
-        학교를 더 쉬원하게{' '}
+        학교를 더 시원하게{' '}
         <StyledEmoji role="img" aria-label="wave">
           🌊
         </StyledEmoji>{' '}
