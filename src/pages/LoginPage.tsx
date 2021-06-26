@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
+import { useHistory } from 'react-router-dom';
 import { RoundHeading1 } from '../atoms/Typography/Heading';
 import { Gap } from '../utils/Gap';
 import { Input } from '../atoms/Form/Input';
@@ -10,7 +11,7 @@ import { Button } from '../atoms/Button';
 import LoginHeader from '../components/Login/LoginHeader';
 import LoginMealView from '../components/Login/LoginMealView';
 import { Breakpoints, makeMediaQuery } from '../styles/Breakpoint';
-import RequiredInputError from '../components/Form/RequiredInputError';
+import InputError from '../components/Form/InputError';
 import Api from '../apis';
 import { ErrorMessage } from '../apis/ApiErrorMessage';
 
@@ -57,6 +58,7 @@ const LoginPage: React.FC = () => {
     handleSubmit,
     reset
   } = useForm<LoginForm>();
+  const history = useHistory();
 
   const onLoginClick: SubmitHandler<LoginForm> = async (data) => {
     const { id, password } = data;
@@ -94,7 +96,9 @@ const LoginPage: React.FC = () => {
           <Label htmlFor="id">아이디</Label>
           <Gap gap={4} />
           <Input id="id" type="text" autoFocus {...register('id', { required: true })} />
-          <RequiredInputError formError={errors.id}>아이디 칸이 비어있습니다.</RequiredInputError>
+          <InputError formError={errors.id} type="required">
+            아이디 칸이 비어있습니다.
+          </InputError>
 
           <Gap gap={16} />
 
@@ -110,15 +114,19 @@ const LoginPage: React.FC = () => {
               }
             }}
           />
-          <RequiredInputError formError={errors.password}>비밀번호 칸이 비어있습니다.</RequiredInputError>
+          <InputError formError={errors.password} type="required">
+            비밀번호 칸이 비어있습니다.
+          </InputError>
 
           <Gap gap={24} />
 
           <LoginButtonGroup>
-            <Button fontSize="14" onClick={handleSubmit(onLoginClick)}>
+            <Button fontSize="16" onClick={handleSubmit(onLoginClick)}>
               로그인
             </Button>
-            <Button fontSize="14">회원가입</Button>
+            <Button fontSize="16" onClick={() => history.push('/register')}>
+              회원가입
+            </Button>
           </LoginButtonGroup>
         </div>
       </div>
