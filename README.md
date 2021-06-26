@@ -18,6 +18,14 @@
 ![TypeScript](https://img.shields.io/badge/typescript%20-%23007ACC.svg?logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/react%20-%2320232a.svg?logo=react&logoColor=%2361DAFB)
 
+## ⚽ 주요 기능들
+- 고교학점제 수강 신청
+- 익명건의함
+- 급식, 학사일정, 시간표 확인하기
+- 날씨 및 미세먼지 확인하기
+- 우산대여제 자동화 서비스
+
+
 ## 🚀 시작하기
 
 ### `yarn start`
@@ -34,6 +42,7 @@ Lint 검사하기
 수정과 팀원이 아니여도 프로젝트에 기여할 수 있어요!
 
 - [수정과 컨벤션에 대해 알아보기](https://www.notion.so/430ec87ea80e469a8bcbdb26142cc32c)
+
 
 ## 💬 다른 프로젝트들
 
