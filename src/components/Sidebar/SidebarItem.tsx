@@ -2,6 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { Breakpoints, makeMediaQuery } from '../../styles/Breakpoint';
 
 const StyledItem = styled.div`
   display: flex;
@@ -24,6 +25,15 @@ const StyledItem = styled.div`
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  ${makeMediaQuery(Breakpoints.MD)} {
+    width: 100vw;
+    border-radius: 0;
+
+    &:last-child {
+      margin-bottom: 16px;
+    }
   }
 `;
 

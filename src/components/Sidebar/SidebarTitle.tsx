@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction, useMemo } from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import Logo from '../../assets/logo.png';
 import { Gap } from '../../utils/Gap';
+import { Breakpoints, makeMediaQuery } from '../../styles/Breakpoint';
+import useWindowSize from '../../hooks/useWIndowSize';
 
 const TitleItem = styled.div`
   width: 100%;
@@ -13,6 +17,12 @@ const TitleItem = styled.div`
 
   justify-content: center;
   align-items: center;
+
+  ${makeMediaQuery(Breakpoints.MD)} {
+    height: 58px;
+    flex-direction: row;
+    justify-content: space-around;
+  }
 `;
 
 const LogoContainer = styled.div`
@@ -26,11 +36,24 @@ const LogoContainer = styled.div`
   &:hover {
     color: var(--color-button-hover);
   }
+
+  ${makeMediaQuery(Breakpoints.MD)} {
+    flex-direction: row;
+
+    & > img {
+      width: 32px;
+      height: 32px;
+    }
+  }
 `;
 
 const LogoText = styled.p`
   font-family: var(--font-logo), 'sans-serif';
   font-size: 24px;
+
+  ${makeMediaQuery(Breakpoints.MD)} {
+    font-size: 18px;
+  }
 `;
 
 const Information = styled.p`
@@ -38,26 +61,75 @@ const Information = styled.p`
   font-weight: bold;
   font-size: 18px;
   text-align: center;
+
+  ${makeMediaQuery(Breakpoints.MD)} {
+    font-size: 14px;
+  }
 `;
 
 const ProfileText = styled(Link)`
   font-size: 14px;
   color: var(--color-subtext);
+
+  ${makeMediaQuery(Breakpoints.MD)} {
+    display: none;
+  }
 `;
 
-const SidebarTitle: React.FC = () => {
+const MobileRightMenu = styled.div`
+  ${makeMediaQuery(Breakpoints.MD)} {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    & > * {
+      margin-right: 16px;
+    }
+
+    & > *:last-child {
+      margin-right: 0;
+    }
+  }
+`;
+
+const MenuOpenButtton = styled.div`
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-button-hover);
+  }
+`;
+
+interface SidebarTitleProps {
+  readonly setOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+const SidebarTitle: React.FC<SidebarTitleProps> = ({ setOpen }) => {
+  const [width] = useWindowSize();
+  const isDesktop = useMemo(() => width > Number(Breakpoints.MD.replace('px', '')), [width]);
+
   return (
     <TitleItem>
       <LogoContainer>
         <img src={Logo} alt="수정과" width={60} height={60} />
         <LogoText>수정과</LogoText>
       </LogoContainer>
+
       <Gap gap={24} />
-      <Information>
-        3학년 9반 홍길동 님
-        <Gap gap={8} />
-        <ProfileText to="/">프로필 수정</ProfileText>
-      </Information>
+
+      <MobileRightMenu>
+        <Information>
+          {isDesktop ? '3학년 9반 홍길동 님' : '홍길동 님'}
+          {isDesktop && <Gap gap={8} />}
+          <ProfileText to="/">프로필 수정</ProfileText>
+        </Information>
+
+        {!isDesktop && (
+          <MenuOpenButtton onClick={() => setOpen((v) => !v)}>
+            <FontAwesomeIcon icon={faBars} size="lg" />
+          </MenuOpenButtton>
+        )}
+      </MobileRightMenu>
     </TitleItem>
   );
 };
