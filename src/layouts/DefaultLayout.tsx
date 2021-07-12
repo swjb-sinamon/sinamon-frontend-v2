@@ -16,7 +16,7 @@ const DefaultLayout: React.FC = ({ children }) => {
   return (
     <SideBarContainer>
       <Sidebar />
-      {children}
+      <div>{children}</div>
     </SideBarContainer>
   );
 };
