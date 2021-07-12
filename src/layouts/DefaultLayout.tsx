@@ -12,11 +12,19 @@ const SideBarContainer = styled.div`
   }
 `;
 
+const MainContent = styled.div`
+  padding: 2rem 2.4rem;
+
+  ${makeMediaQuery(Breakpoints.MD)} {
+    padding: 1.2rem;
+  }
+`;
+
 const DefaultLayout: React.FC = ({ children }) => {
   return (
     <SideBarContainer>
       <Sidebar />
-      <div>{children}</div>
+      <MainContent>{children}</MainContent>
     </SideBarContainer>
   );
 };
