@@ -11,6 +11,7 @@ import {
 import SidebarTitle from './SidebarTitle';
 import SidebarItem from './SidebarItem';
 import { Breakpoints, makeMediaQuery } from '../../styles/Breakpoint';
+import Api from '../../apis';
 
 const StyledSidebar = styled.div`
   min-height: 100vh;
@@ -44,7 +45,16 @@ const Sidebar: React.FC = () => {
         <SidebarItem icon={faChalkboard}>수강신청</SidebarItem>
         <SidebarItem icon={faSchool}>학사일정</SidebarItem>
         <SidebarItem icon={faStickyNote}>익명건의함</SidebarItem>
-        <SidebarItem icon={faSignOutAlt}>로그아웃</SidebarItem>
+
+        <SidebarItem
+          icon={faSignOutAlt}
+          tabIndex={0}
+          onClick={() => {
+            Api.delete('/auth/logout');
+          }}
+        >
+          로그아웃
+        </SidebarItem>
       </SidebarList>
     </StyledSidebar>
   );
