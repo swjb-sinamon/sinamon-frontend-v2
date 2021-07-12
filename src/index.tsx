@@ -6,21 +6,24 @@ import Router from './Router';
 import GlobalStyle from './styles/Global';
 import { ProfileProvider } from './hooks/useProfile';
 import { MealProvider } from './hooks/useMeal';
+import { WeatherProvider } from './hooks/useWeather';
 
 ReactDOM.render(
   <React.StrictMode>
     <ProfileProvider>
       <MealProvider>
-        <Toaster
-          position="top-right"
-          toastOptions={{
-            style: {
-              fontSize: '14px'
-            }
-          }}
-        />
-        <GlobalStyle />
-        <Router />
+        <WeatherProvider>
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              style: {
+                fontSize: '14px'
+              }
+            }}
+          />
+          <GlobalStyle />
+          <Router />
+        </WeatherProvider>
       </MealProvider>
     </ProfileProvider>
   </React.StrictMode>,
