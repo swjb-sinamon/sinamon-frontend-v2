@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Gap } from '../../utils/Gap';
+import { Heading3 } from '../../atoms/Typography/Heading';
 
 const Box = styled.div`
   width: 200px;
@@ -12,8 +13,7 @@ const Box = styled.div`
   padding: 1rem 1.4rem;
 `;
 
-const DayTitle = styled.h1`
-  font-size: 20px;
+const DayTitle = styled(Heading3)`
   color: var(--color-main);
 `;
 
