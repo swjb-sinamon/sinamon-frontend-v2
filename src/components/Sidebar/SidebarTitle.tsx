@@ -56,7 +56,7 @@ const LogoText = styled.p`
   }
 `;
 
-const Information = styled.p`
+const Information = styled.div`
   font-family: 'NanumSquareRound', sans-serif;
   font-weight: bold;
   font-size: 18px;
