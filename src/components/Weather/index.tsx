@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import Notice from '../Notice/index';
 import { useWeather } from '../../hooks/useWeather';
 import { Heading2 } from '../../atoms/Typography/Heading';
 import WeatherIcon from '../../atoms/Icon/WeatherIcon';
 
 console.log(WeatherIcon);
 
-const WeatherContainer = styled.div`
-    width: 400px;
+const WeatherNoticeContainer = styled.div`
+    width: 380px;
 
     display: flex;
     flex-direction: column;
@@ -16,16 +17,16 @@ const WeatherHeader = styled.div`
     margin-bottom: 8px;
 `
 
-const StyledWeatherText = styled.span`
-  color: var(--color-main);
-`;
+// const StyledWeatherText = styled.span`
+//   color: var(--color-main);
+// `;
 
 const WeatherContent = styled.div<{ background: string[] }>`
-    background: linear-gradient(to bottom, #72a6d6, #a8c0ff);
+    background: linear-gradient(to top, #a8c0ff, #72a6d6);
 
-    border-radius: 40px;
+    border-radius: 30px;
 
-    padding: 45px 55px 30px;
+    padding: 45px 40px 30px;
 `
 const WeatherContentTop = styled.div`
     display: flex;
@@ -34,7 +35,6 @@ const WeatherContentTop = styled.div`
 
     padding: 0 30px 25px;
 
-    /* border-top: 2px solid #fff;  */
     border-bottom: 2px solid #fff; 
 `
 
@@ -61,8 +61,6 @@ const DustContentBottom = styled.div`
     justify-content: space-around;
 
     padding: 12px 15px;
-
-    /* border-bottom: 2px solid #fff; */
 `
 
 const StyledDustStatus = styled.p`
@@ -84,10 +82,10 @@ const WeatherCard: React.FC = () => {
     }
 
     return (
-        <WeatherContainer>
+        <WeatherNoticeContainer>
             <WeatherHeader>
                 <Heading2>
-                    <StyledWeatherText> </StyledWeatherText>
+                    오늘의 날씨
                 </Heading2>
             </WeatherHeader>
             <WeatherContent background={background.RAIN}>
@@ -107,7 +105,8 @@ const WeatherCard: React.FC = () => {
                     <StyledDustStatus>초미세먼지 <StyledDustHighlight>좋음</StyledDustHighlight></StyledDustStatus>
                 </DustContentBottom>
             </WeatherContent>
-        </ WeatherContainer>
+            <Notice />
+        </ WeatherNoticeContainer>
     )
 }
 
