@@ -4,6 +4,7 @@ import Side from '../components/Sidebar';
 import { Heading2, Heading3 } from '../atoms/Typography/Heading';
 import { Gap } from '../utils/Gap';
 import { Breakpoints, makeMediaQuery } from '../styles/Breakpoint';
+import { useMeal } from '../hooks/useMeal';
 
 const Container = styled.div`
     height: 100vh;
@@ -29,7 +30,7 @@ const MealList = styled.div`
 `;
 
 const MealBox = styled.div`
-    width: 11vw;
+    width: 25vw;
     height: 26vh;
     border-radius: 3px;
     border: 1px solid var(--color-gray);
@@ -43,6 +44,7 @@ const MealBox = styled.div`
 `;
 
 const MealPage = () => {
+    const Meal = useMeal();
     return (
         <Container>
             <Side />
@@ -52,35 +54,12 @@ const MealPage = () => {
                 <Gap gap={8} />
                 <MealList>
                     <MealBox>
-                        <StyledHeading3>월요일</StyledHeading3>
+                        <StyledHeading3>오늘</StyledHeading3>
                         <Gap gap={16} />
-                        <p>고기</p>
-                        <p>돼지고기</p>
-                        <p>소고기</p>
+                        <p>{Meal}</p>
                     </MealBox>
                     <MealBox>
-                        <StyledHeading3>화요일</StyledHeading3>
-                        <Gap gap={16} />
-                        <p>고기</p>
-                        <p>돼지고기</p>
-                        <p>소고기</p>
-                    </MealBox>
-                    <MealBox>
-                        <StyledHeading3>수요일</StyledHeading3>
-                        <Gap gap={16} />
-                        <p>고기</p>
-                        <p>돼지고기</p>
-                        <p>소고기</p>
-                    </MealBox>
-                    <MealBox>
-                        <StyledHeading3>목요일</StyledHeading3>
-                        <Gap gap={16} />
-                        <p>고기</p>
-                        <p>돼지고기</p>
-                        <p>소고기</p>
-                    </MealBox>
-                    <MealBox>
-                        <StyledHeading3>금요일</StyledHeading3>
+                        <StyledHeading3>내일</StyledHeading3>
                         <Gap gap={16} />
                         <p>고기</p>
                         <p>돼지고기</p>
