@@ -1,27 +1,15 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import Notice from '../Notice/index';
 import { useWeather } from '../../hooks/useWeather';
-import { Heading2 } from '../../atoms/Typography/Heading';
 import { convertPm10ToString, convertPm25ToString } from '../../utils/Dust';
 import WeatherIcon from '../../atoms/Icon/WeatherIcon';
-
-const WeatherNoticeContainer = styled.div`
-  width: 380px;
-
-  display: flex;
-  flex-direction: column;
-`;
-const WeatherHeader = styled.div`
-  margin-bottom: 8px;
-`;
 
 const WeatherContent = styled.div<{ background: string }>`
   background: ${(props) => props.background};
 
   border-radius: 30px;
 
-  padding: 45px 40px 30px;
+  padding: 46px 40px 30px;
 `;
 
 const WeatherContentTop = styled.div`
@@ -29,7 +17,7 @@ const WeatherContentTop = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  padding: 0 30px 25px;
+  padding: 0 30px 26px;
 
   border-bottom: 2px solid #fff;
 `;
@@ -56,7 +44,7 @@ const DustContentBottom = styled.div`
   display: flex;
   justify-content: space-around;
 
-  padding: 12px 15px;
+  padding: 12px 16px;
 `;
 
 const StyledDustStatus = styled.p`
@@ -69,8 +57,6 @@ const StyledDustHighlight = styled.span`
 
 const WeatherCard: React.FC = () => {
   const { weather, dust } = useWeather();
-
-  console.log(weather, dust);
 
   const [pm10Text] = convertPm10ToString(dust.pm10);
   const [pm25Text] = convertPm25ToString(dust.pm25);
@@ -94,18 +80,16 @@ const WeatherCard: React.FC = () => {
   };
 
   return (
-    <WeatherNoticeContainer>
-      <WeatherHeader>
-        <Heading2>오늘의 날씨</Heading2>
-      </WeatherHeader>
+    <>
       <WeatherContent background={background.CLOUDS}>
         <WeatherContentTop>
-          <WeatherIcon weather="CLOUDS" />
+          <WeatherIcon weather={weather.status} />
           <WeatherContentStatus>
             <StyledWeatherTemp>{weather.temp}℃</StyledWeatherTemp>
             <StyledWeatherStatus>{status[weather.status]}</StyledWeatherStatus>
           </WeatherContentStatus>
         </WeatherContentTop>
+
         <DustContentBottom>
           <StyledDustStatus>
             미세먼지 <StyledDustHighlight>{pm10Text}</StyledDustHighlight>
@@ -115,8 +99,7 @@ const WeatherCard: React.FC = () => {
           </StyledDustStatus>
         </DustContentBottom>
       </WeatherContent>
-      <Notice />
-    </WeatherNoticeContainer>
+    </>
   );
 };
 
