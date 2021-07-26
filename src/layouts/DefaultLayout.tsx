@@ -13,7 +13,7 @@ const SideBarContainer = styled.div`
 `;
 
 const MainContent = styled.div`
-  padding: 2rem 2.4rem;
+  padding: 3rem 2.4rem;
 
   ${makeMediaQuery(Breakpoints.MD)} {
     padding: 1.2rem;
