@@ -10,6 +10,8 @@ import MoreButton from '../atoms/Button/MoreButton';
 import { useMeal } from '../hooks/useMeal';
 import { useTimetable } from '../hooks/useTimetable';
 import MealCard from '../components/MealCard';
+import WeatherCard from '../components/Weather';
+import Notice from '../components/Notice';
 
 const TimetableList = styled.div`
   display: flex;
@@ -30,6 +32,13 @@ const ContentHeader = styled.div`
   align-items: center;
 `;
 
+const WeatherNoticeContainer = styled.div`
+  width: 380px;
+
+  display: flex;
+  flex-direction: column;
+`;
+
 const timetableDay = ['월요일', '화요일', '수요일', '목요일', '금요일'];
 
 const MainPage: React.FC = () => {
@@ -39,6 +48,11 @@ const MainPage: React.FC = () => {
   return (
     <DefaultLayout>
       <Background />
+      
+      <WeatherNoticeContainer>
+        <WeatherCard />
+        <Notice />
+      </WeatherNoticeContainer>
 
       <TimetableList>
         <MealCard title="오늘 급식" icon={faFish} iconSize="5x">
@@ -55,7 +69,9 @@ const MainPage: React.FC = () => {
         <Heading2>이번주 시간표</Heading2>
         <MoreButton to="/" />
       </ContentHeader>
+      
       <Gap gap={8} />
+
       <TimetableList>
         {timetable.map((todayTime, index) => (
           // eslint-disable-next-line react/no-array-index-key
@@ -70,7 +86,6 @@ const MainPage: React.FC = () => {
           </TimetableCard>
         ))}
       </TimetableList>
-    </DefaultLayout>
   );
 };
 
