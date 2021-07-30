@@ -14,10 +14,9 @@ const NoticeContainer = styled.div`
 `;
 
 const NoticeTitle = styled.p`
-  width: 65px;
-
   color: #111d68;
   font-weight: bold;
+  margin-right: 8px;
 `;
 
 const NoticeContent = styled.p`
