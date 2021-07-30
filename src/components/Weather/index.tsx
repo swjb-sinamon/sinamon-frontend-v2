@@ -14,7 +14,7 @@ const WeatherContent = styled.div<{ background: string }>`
 
   ${makeMediaQuery(Breakpoints.MD)} {
     padding: 36px 40px 30px;
-    width: 320px;
+    width: 100%;
   }
 `;
 

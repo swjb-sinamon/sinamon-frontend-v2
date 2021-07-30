@@ -25,7 +25,28 @@ const TopContainer = styled.div`
   }
 `;
 
-const ContentList = styled.div`
+const MealList = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  margin-left: 4rem;
+  margin-top: 0.7rem;
+
+  & > * {
+    margin-right: 12px;
+  }
+
+  & > *:last-child {
+    margin-right: 0;
+  }
+
+  ${makeMediaQuery(Breakpoints.MD)} {
+    margin: 32px 0 0 0;
+  }
+`;
+
+const TimetableList = styled.div`
   display: flex;
   flex-direction: row;
 
@@ -36,18 +57,7 @@ const ContentList = styled.div`
   & > *:last-child {
     margin-right: 0;
   }
-`;
 
-const MealList = styled(ContentList)`
-  margin-left: 4rem;
-  margin-top: 0.7rem;
-
-  ${makeMediaQuery(Breakpoints.MD)} {
-    margin: 32px 0 0 0;
-  }
-`;
-
-const TimetableList = styled(ContentList)`
   ${makeMediaQuery(Breakpoints.MD)} {
     flex-direction: column;
     align-items: center;
