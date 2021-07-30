@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { RoundHeading3 } from '../../atoms/Typography/Heading';
 import { Gap } from '../../utils/Gap';
+import { Breakpoints, makeMediaQuery } from '../../styles/Breakpoint';
 
 const Box = styled.div`
   position: relative;
@@ -20,6 +21,10 @@ const Box = styled.div`
     flex-direction: column;
 
     align-items: center;
+  }
+
+  ${makeMediaQuery(Breakpoints.MD)} {
+    width: 150px;
   }
 `;
 

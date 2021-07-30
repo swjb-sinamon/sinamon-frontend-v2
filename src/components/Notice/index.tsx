@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import Api from '../../apis';
+import { Breakpoints, makeMediaQuery } from '../../styles/Breakpoint';
 
 const NoticeContainer = styled.div`
-  font-size: .9rem;
+  font-size: 0.9rem;
   color: #666;
 
   display: flex;
@@ -19,11 +20,15 @@ const NoticeTitle = styled.p`
   font-weight: bold;
 `;
 
-const NoticeContent = styled.span`
+const NoticeContent = styled.p`
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-`
+
+  ${makeMediaQuery(Breakpoints.MD)} {
+    width: 70%;
+  }
+`;
 
 const Notice: React.FC = () => {
   const [notice, setNotice] = useState<string>('');

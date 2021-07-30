@@ -12,8 +12,20 @@ import { useTimetable } from '../hooks/useTimetable';
 import MealCard from '../components/MealCard';
 import WeatherCard from '../components/Weather';
 import Notice from '../components/Notice';
+import { Breakpoints, makeMediaQuery } from '../styles/Breakpoint';
 
-const TimetableList = styled.div`
+const TopContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  ${makeMediaQuery(Breakpoints.MD)} {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+`;
+
+const ContentList = styled.div`
   display: flex;
   flex-direction: row;
 
@@ -26,6 +38,31 @@ const TimetableList = styled.div`
   }
 `;
 
+const MealList = styled(ContentList)`
+  margin-left: 4rem;
+  margin-top: 0.7rem;
+
+  ${makeMediaQuery(Breakpoints.MD)} {
+    margin: 32px 0 0 0;
+  }
+`;
+
+const TimetableList = styled(ContentList)`
+  ${makeMediaQuery(Breakpoints.MD)} {
+    flex-direction: column;
+    align-items: center;
+
+    & > * {
+      margin-right: 0;
+      margin-bottom: 12px;
+    }
+
+    & > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+`;
+
 const ContentHeader = styled.div`
   display: flex;
   flex-direction: row;
@@ -33,8 +70,6 @@ const ContentHeader = styled.div`
 `;
 
 const WeatherNoticeContainer = styled.div`
-  width: 380px;
-
   display: flex;
   flex-direction: column;
 `;
@@ -48,20 +83,22 @@ const MainPage: React.FC = () => {
   return (
     <DefaultLayout>
       <Background />
-      
-      <WeatherNoticeContainer>
-        <WeatherCard />
-        <Notice />
-      </WeatherNoticeContainer>
 
-      <TimetableList>
-        <MealCard title="오늘 급식" icon={faFish} iconSize="5x">
-          {today}
-        </MealCard>
-        <MealCard title="내일 급식" icon={faEgg} iconSize="4x" iconOffset={10}>
-          {tomorrow}
-        </MealCard>
-      </TimetableList>
+      <TopContainer>
+        <WeatherNoticeContainer>
+          <WeatherCard />
+          <Notice />
+        </WeatherNoticeContainer>
+
+        <MealList>
+          <MealCard title="오늘 급식" icon={faFish} iconSize="5x">
+            {today}
+          </MealCard>
+          <MealCard title="내일 급식" icon={faEgg} iconSize="4x" iconOffset={10}>
+            {tomorrow}
+          </MealCard>
+        </MealList>
+      </TopContainer>
 
       <Gap gap={32} />
 
@@ -69,7 +106,7 @@ const MainPage: React.FC = () => {
         <Heading2>이번주 시간표</Heading2>
         <MoreButton to="/" />
       </ContentHeader>
-      
+
       <Gap gap={8} />
 
       <TimetableList>
@@ -86,6 +123,7 @@ const MainPage: React.FC = () => {
           </TimetableCard>
         ))}
       </TimetableList>
+    </DefaultLayout>
   );
 };
 
