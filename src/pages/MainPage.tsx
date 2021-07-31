@@ -5,7 +5,6 @@ import DefaultLayout from '../layouts/DefaultLayout';
 import TimetableCard from '../components/TimetableCard';
 import { Heading2 } from '../atoms/Typography/Heading';
 import { Gap } from '../utils/Gap';
-import Background from '../components/Background';
 import MoreButton from '../atoms/Button/MoreButton';
 import { useMeal } from '../hooks/useMeal';
 import { useTimetable } from '../hooks/useTimetable';
@@ -92,8 +91,6 @@ const MainPage: React.FC = () => {
 
   return (
     <DefaultLayout>
-      <Background />
-
       <TopContainer>
         <WeatherNoticeContainer>
           <WeatherCard />

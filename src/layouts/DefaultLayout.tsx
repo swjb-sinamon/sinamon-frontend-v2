@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Sidebar from '../components/Sidebar';
 import { Breakpoints, makeMediaQuery } from '../styles/Breakpoint';
+import Background from '../components/Background';
 
 const SideBarContainer = styled.div`
   display: grid;
@@ -24,7 +25,10 @@ const DefaultLayout: React.FC = ({ children }) => {
   return (
     <SideBarContainer>
       <Sidebar />
-      <MainContent>{children}</MainContent>
+      <MainContent>
+        <Background />
+        {children}
+      </MainContent>
     </SideBarContainer>
   );
 };
