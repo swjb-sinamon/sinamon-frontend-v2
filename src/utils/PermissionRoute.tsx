@@ -1,5 +1,6 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, useLocation } from 'react-router-dom';
+import querystring from 'querystring';
 import { useProfile } from '../hooks/useProfile';
 
 type Permission = 'admin' | 'teacher' | 'schoolunion';
@@ -7,7 +8,7 @@ type Permission = 'admin' | 'teacher' | 'schoolunion';
 interface PermissionRouteProps {
   path: string | string[];
   exact?: boolean;
-  success: React.ComponentType<any>;
+  success: (q: string) => React.ComponentType<any>;
   failure: React.ComponentType<any>;
   permissions?: Permission[];
 }
@@ -20,8 +21,10 @@ const PermissionRoute: React.FC<PermissionRouteProps> = ({
   permissions
 }) => {
   const profile = useProfile();
+  const location = useLocation();
+  const { q } = querystring.parse(location.search.replace('?', ''));
 
-  const SuccessRoute = () => <Route exact={exact} path={path} component={Success} />;
+  const SuccessRoute = () => <Route exact={exact} path={path} component={Success(q as string)} />;
   const FailureRoute = () => <Route exact={exact} path={path} component={Failure} />;
 
   if (!profile) return <FailureRoute />;
