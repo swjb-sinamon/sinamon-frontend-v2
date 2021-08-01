@@ -7,6 +7,7 @@ import Logo from '../../assets/logo.png';
 import { Gap } from '../../utils/Gap';
 import { Breakpoints, makeMediaQuery } from '../../styles/Breakpoint';
 import useWindowSize from '../../hooks/useWIndowSize';
+import { useProfile } from '../../hooks/useProfile';
 
 const TitleItem = styled.div`
   width: 100%;
@@ -107,6 +108,7 @@ interface SidebarTitleProps {
 const SidebarTitle: React.FC<SidebarTitleProps> = ({ setOpen }) => {
   const [width] = useWindowSize();
   const isDesktop = useMemo(() => width > Number(Breakpoints.MD.replace('px', '')), [width]);
+  const profile = useProfile();
 
   return (
     <TitleItem>
@@ -126,7 +128,11 @@ const SidebarTitle: React.FC<SidebarTitleProps> = ({ setOpen }) => {
 
       <MobileRightMenu>
         <Information>
-          {isDesktop ? '3학년 9반 홍길동 님' : '홍길동 님'}
+          {isDesktop ? (
+            `${profile?.studentGrade}학년 ${profile?.studentClass}반 ${profile?.name} 님`
+          ) : (
+            <Link to="/me">{`${profile?.name} 님`}</Link>
+          )}
           {isDesktop && <Gap gap={8} />}
           <ProfileText to="/me">프로필 수정</ProfileText>
         </Information>
