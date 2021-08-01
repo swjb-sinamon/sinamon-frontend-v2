@@ -110,10 +110,17 @@ const SidebarTitle: React.FC<SidebarTitleProps> = ({ setOpen }) => {
 
   return (
     <TitleItem>
-      <LogoContainer>
-        <img src={Logo} alt="수정과" width={60} height={60} />
-        <LogoText>수정과</LogoText>
-      </LogoContainer>
+      <Link
+        to="/"
+        style={{
+          textDecoration: 'none'
+        }}
+      >
+        <LogoContainer>
+          <img src={Logo} alt="수정과" width={60} height={60} />
+          <LogoText>수정과</LogoText>
+        </LogoContainer>
+      </Link>
 
       <Gap gap={24} />
 
@@ -121,7 +128,7 @@ const SidebarTitle: React.FC<SidebarTitleProps> = ({ setOpen }) => {
         <Information>
           {isDesktop ? '3학년 9반 홍길동 님' : '홍길동 님'}
           {isDesktop && <Gap gap={8} />}
-          <ProfileText to="/">프로필 수정</ProfileText>
+          <ProfileText to="/me">프로필 수정</ProfileText>
         </Information>
 
         {!isDesktop && (
