@@ -15,7 +15,7 @@ const Router: React.FC = () => {
     <BrowserRouter>
       <Switch>
         <PermissionRoute path="/" success={() => MainPage} failure={() => RedirectLogin('/')} exact />
-        <PermissionRoute path="/login" success={() => <Redirect to="/" />} failure={LoginPage} exact />
+        <PermissionRoute path="/me" success={() => MyPage} failure={() => RedirectLogin('/me')} exact />
         <PermissionRoute path="/login" success={(q) => () => <Redirect to={q || '/'} />} failure={LoginPage} exact />
         <Route path="/register" component={RegisterPage} exact />
         <Route path="/privacy" component={PrivacyPage} exact />
