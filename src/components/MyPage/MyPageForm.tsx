@@ -72,6 +72,7 @@ const MyPageForm: React.FC<MyPageFormProps<MyPageFormType>> = ({
         name="clazz"
         control={control}
         rules={{ required: true }}
+        defaultValue={studentClass}
         render={({ field }) => (
           <RadioGroup {...field}>
             <Radio id="clazz" name="clazz" title="1반" value="1" defaultChecked={studentClass === 1} />

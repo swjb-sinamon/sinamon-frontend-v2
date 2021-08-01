@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 import DefaultLayout from '../layouts/DefaultLayout';
 import { Heading2 } from '../atoms/Typography/Heading';
 import { Gap } from '../utils/Gap';
 import { Button } from '../atoms/Button';
 import MyPageForm from '../components/MyPage/MyPageForm';
 import { useProfile } from '../hooks/useProfile';
+import Api from '../apis';
 
 const TipMessage = styled.p`
   color: var(--color-subtext);
@@ -23,6 +25,26 @@ export interface MyPageFormType {
 const MyPage: React.FC = () => {
   const profile = useProfile();
   const { register, control, formState, getValues, handleSubmit } = useForm<MyPageFormType>();
+
+  const onButtonClick: SubmitHandler<MyPageFormType> = async (data) => {
+    console.log(data);
+    const { grade, clazz, studentNumber, newPassword, passwordConfirm } = data;
+
+    if (newPassword && newPassword !== passwordConfirm) {
+      toast.error('비밀번호를 다시 확인해주세요.');
+      return;
+    }
+
+    await Api.put('/auth/me', {
+      studentGrade: Number(grade),
+      studentClass: Number(clazz),
+      studentNumber: Number(studentNumber),
+      newPassword
+    });
+
+    toast.success('계정 정보가 수정되었습니다.');
+    window.location.reload();
+  };
 
   return (
     <DefaultLayout>
@@ -43,7 +65,7 @@ const MyPage: React.FC = () => {
 
       <Gap gap={32} />
 
-      <Button onClick={handleSubmit(() => console.log())}>수정하기</Button>
+      <Button onClick={handleSubmit(onButtonClick)}>수정하기</Button>
     </DefaultLayout>
   );
 };
