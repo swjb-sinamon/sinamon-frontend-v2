@@ -109,6 +109,11 @@ const SidebarTitle: React.FC<SidebarTitleProps> = ({ setOpen }) => {
   const [width] = useWindowSize();
   const isDesktop = useMemo(() => width > Number(Breakpoints.MD.replace('px', '')), [width]);
   const profile = useProfile();
+  const profileText = isDesktop ? (
+    `${profile?.studentGrade}학년 ${profile?.studentClass}반 ${profile?.name} 님`
+  ) : (
+    <Link to="/me">{`${profile?.name} 님`}</Link>
+  );
 
   return (
     <TitleItem>
@@ -128,11 +133,7 @@ const SidebarTitle: React.FC<SidebarTitleProps> = ({ setOpen }) => {
 
       <MobileRightMenu>
         <Information>
-          {isDesktop ? (
-            `${profile?.studentGrade}학년 ${profile?.studentClass}반 ${profile?.name} 님`
-          ) : (
-            <Link to="/me">{`${profile?.name} 님`}</Link>
-          )}
+          {profileText}
           {isDesktop && <Gap gap={8} />}
           <ProfileText to="/me">프로필 수정</ProfileText>
         </Information>
