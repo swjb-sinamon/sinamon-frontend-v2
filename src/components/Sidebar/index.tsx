@@ -35,6 +35,16 @@ const SidebarList = styled.div<{ open?: boolean }>`
 const Sidebar: React.FC = () => {
   const [isOpen, setOpen] = useState<boolean>(false);
 
+  const onLogoutClick = () => {
+    // TODO: SweetAlert으로 대체
+    // eslint-disable-next-line no-restricted-globals,no-alert
+    const isLogout = confirm('정말로 로그아웃 할까요?');
+
+    if (!isLogout) return;
+
+    Api.delete('/auth/logout').then(() => window.location.reload());
+  };
+
   return (
     <StyledSidebar>
       <SidebarTitle setOpen={setOpen} />
@@ -46,13 +56,7 @@ const Sidebar: React.FC = () => {
         <SidebarItem icon={faSchool}>학사일정</SidebarItem>
         <SidebarItem icon={faStickyNote}>익명건의함</SidebarItem>
 
-        <SidebarItem
-          icon={faSignOutAlt}
-          tabIndex={0}
-          onClick={() => {
-            Api.delete('/auth/logout');
-          }}
-        >
+        <SidebarItem icon={faSignOutAlt} tabIndex={0} onClick={onLogoutClick}>
           로그아웃
         </SidebarItem>
       </SidebarList>
