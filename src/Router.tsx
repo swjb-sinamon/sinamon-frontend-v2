@@ -23,7 +23,7 @@ const Router: React.FC = () => {
         <Route path="/privacy" component={PrivacyPage} exact />
         <Route path="/tos" component={ToSPage} exact />
         <Route path="/meal" component={MealPage} exact />
-        <Route path="/Anonymous" component={AnonymousPage} exact />
+        <PermissionRoute path="/anonymous" success={() => AnonymousPage} failure={() => RedirectLogin('/anonymous')} exact />
       </Switch>
     </BrowserRouter>
   );
