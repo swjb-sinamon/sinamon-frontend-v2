@@ -7,22 +7,25 @@ import GlobalStyle from './styles/Global';
 import { ProfileProvider } from './hooks/useProfile';
 import { MealProvider } from './hooks/useMeal';
 import { WeatherProvider } from './hooks/useWeather';
+import { TimetableProvider } from './hooks/useTimetable';
 
 ReactDOM.render(
   <React.StrictMode>
     <ProfileProvider>
       <MealProvider>
         <WeatherProvider>
-          <Toaster
-            position="top-right"
-            toastOptions={{
-              style: {
-                fontSize: '14px'
-              }
-            }}
-          />
-          <GlobalStyle />
-          <Router />
+          <TimetableProvider>
+            <Toaster
+              position="top-right"
+              toastOptions={{
+                style: {
+                  fontSize: '14px'
+                }
+              }}
+            />
+            <GlobalStyle />
+            <Router />
+          </TimetableProvider>
         </WeatherProvider>
       </MealProvider>
     </ProfileProvider>

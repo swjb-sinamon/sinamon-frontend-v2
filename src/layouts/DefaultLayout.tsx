@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Sidebar from '../components/Sidebar';
 import { Breakpoints, makeMediaQuery } from '../styles/Breakpoint';
+import Background from '../components/Background';
 
 const SideBarContainer = styled.div`
   display: grid;
@@ -13,7 +14,7 @@ const SideBarContainer = styled.div`
 `;
 
 const MainContent = styled.div`
-  padding: 2rem 2.4rem;
+  padding: 3rem 2.4rem;
 
   ${makeMediaQuery(Breakpoints.MD)} {
     padding: 1.2rem;
@@ -24,7 +25,10 @@ const DefaultLayout: React.FC = ({ children }) => {
   return (
     <SideBarContainer>
       <Sidebar />
-      <MainContent>{children}</MainContent>
+      <MainContent>
+        <Background />
+        {children}
+      </MainContent>
     </SideBarContainer>
   );
 };

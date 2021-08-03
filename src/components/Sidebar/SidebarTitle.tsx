@@ -7,6 +7,7 @@ import Logo from '../../assets/logo.png';
 import { Gap } from '../../utils/Gap';
 import { Breakpoints, makeMediaQuery } from '../../styles/Breakpoint';
 import useWindowSize from '../../hooks/useWIndowSize';
+import { useProfile } from '../../hooks/useProfile';
 
 const TitleItem = styled.div`
   width: 100%;
@@ -56,7 +57,7 @@ const LogoText = styled.p`
   }
 `;
 
-const Information = styled.p`
+const Information = styled.div`
   font-family: 'NanumSquareRound', sans-serif;
   font-weight: bold;
   font-size: 18px;
@@ -107,21 +108,34 @@ interface SidebarTitleProps {
 const SidebarTitle: React.FC<SidebarTitleProps> = ({ setOpen }) => {
   const [width] = useWindowSize();
   const isDesktop = useMemo(() => width > Number(Breakpoints.MD.replace('px', '')), [width]);
+  const profile = useProfile();
+  const profileText = isDesktop ? (
+    `${profile?.studentGrade}학년 ${profile?.studentClass}반 ${profile?.name} 님`
+  ) : (
+    <Link to="/me">{`${profile?.name} 님`}</Link>
+  );
 
   return (
     <TitleItem>
-      <LogoContainer>
-        <img src={Logo} alt="수정과" width={60} height={60} />
-        <LogoText>수정과</LogoText>
-      </LogoContainer>
+      <Link
+        to="/"
+        style={{
+          textDecoration: 'none'
+        }}
+      >
+        <LogoContainer>
+          <img src={Logo} alt="수정과" width={60} height={60} />
+          <LogoText>수정과</LogoText>
+        </LogoContainer>
+      </Link>
 
       <Gap gap={24} />
 
       <MobileRightMenu>
         <Information>
-          {isDesktop ? '3학년 9반 홍길동 님' : '홍길동 님'}
+          {profileText}
           {isDesktop && <Gap gap={8} />}
-          <ProfileText to="/">프로필 수정</ProfileText>
+          <ProfileText to="/me">프로필 수정</ProfileText>
         </Information>
 
         {!isDesktop && (
