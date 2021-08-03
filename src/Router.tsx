@@ -8,6 +8,7 @@ import PrivacyPage from './pages/PrivacyPage';
 import ToSPage from './pages/ToSPage';
 import MealPage from './pages/MealPage';
 import MyPage from './pages/MyPage';
+import AnonymousPage from './pages/AnonymousPage';
 
 const RedirectLogin = (path: string) => <Redirect to={`/login?q=${path}`} />;
 
@@ -22,6 +23,7 @@ const Router: React.FC = () => {
         <Route path="/privacy" component={PrivacyPage} exact />
         <Route path="/tos" component={ToSPage} exact />
         <Route path="/meal" component={MealPage} exact />
+        <Route path="/Anonymous" component={AnonymousPage} exact />
       </Switch>
     </BrowserRouter>
   );
