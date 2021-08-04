@@ -38,3 +38,7 @@ export interface ComciganTimetableType {
   readonly subject: string;
   readonly url: string;
 }
+export interface ApiAnonymous {
+  readonly title: string;
+  readonly contents: string;
+}
