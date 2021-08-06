@@ -17,21 +17,24 @@ const Box = styled.div`
 `;
 
 const MealList = styled.div`
-  display: flex;
   width: 53vw;
+  
+  display: flex;
   justify-content: space-between;
 
   ${makeMediaQuery(Breakpoints.MD)} {
     display: flex;
     flex-direction: column;
-    width: 100%;
     justify-content: space-between;
+    
+    width: 100%;
   }
 `;
 
 const MealBox = styled.div`
   width: 25.5vw;
   height: 300px;
+  
   border-radius: 3px;
   border: 1px solid var(--color-gray);
   border-radius: 30px;
@@ -47,10 +50,12 @@ const MealBox = styled.div`
   ${makeMediaQuery(Breakpoints.MD)} {
     width: 100%;
     height: 400px;
+   
     border-radius: 3px;
     border: 1px solid var(--color-gray);
     border-radius: 30px;
-    box-shadow: 0 0 30px rgba(169, 169, 169, 0.2);
+    
+    box-shadow: 0 0 30px rgba(169, 169, 169, 0.2); 
     margin-bottom: 1rem;
   }
 `;
