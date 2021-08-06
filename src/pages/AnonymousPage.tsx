@@ -77,7 +77,7 @@ const AnonymousPage: React.FC = () => {
                         title={written.title}
                         type="text"
                         onChange={(e) => onTitleChange(e, 'title')}
-                        width={480}
+                        width={385}
                     />
                     <Gap gap={10} />
                     
@@ -87,7 +87,7 @@ const AnonymousPage: React.FC = () => {
                         value={written.contents}
                         onChange={(e) => onContentsChange(e, 'contents')}
                         cols={50}
-                        rows={30}
+                        rows={15}
                     />
                     <Gap gap={30} />
                     <Button onClick={onWrittenClick} >제출하기</Button>
