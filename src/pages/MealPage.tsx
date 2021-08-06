@@ -18,7 +18,7 @@ const Box = styled.div`
 
 const MealList = styled.div`
   display: flex;
-  width: 60vw;
+  width: 55vw;
   justify-content: space-between;
 
   ${makeMediaQuery(Breakpoints.MD)} {
@@ -39,6 +39,11 @@ const MealBox = styled.div`
   padding: 2rem 2rem 2.5rem;
   box-shadow: 0 0 30px rgba(169, 169, 169, 0.2);
 
+  transition: 0.3s;
+  &:hover{
+    transform: translateY(-3px);
+  }
+
   ${makeMediaQuery(Breakpoints.MD)} {
     width: 100%;
     height: 400px;
@@ -56,7 +61,7 @@ const MealPage = () => {
     <DefaultLayout>
         <Box>
           <Heading2>이번주 급식</Heading2>
-          <Gap gap={8} />
+          <Gap gap={10} />
           <MealList>
             <MealBox>
               <StyledHeading3>오늘</StyledHeading3>
