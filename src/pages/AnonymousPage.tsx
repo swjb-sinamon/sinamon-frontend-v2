@@ -1,43 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-hot-toast';
-import styled from '@emotion/styled';
 import { Gap } from '../utils/Gap';
 import { Heading1, Heading3 , RoundHeading2 } from '../atoms/Typography/Heading';
 import AnonymousListCard from '../components/AnonymousListCard';
 import { Input } from '../atoms/Form/Input';
 import { Button } from '../atoms/Button';
 import Api from '../apis';
-import MainSideBar from '../components/Sidebar';
 import {ApiAnonymous} from '../types/ApiResponse';
 import DefaultLayout from '../layouts/DefaultLayout';
-
-
-const StyledContent = styled.div`
-  margin: 3rem;
-`;
-
-const StyledTextAreaContents = styled.textarea`
-padding-left: 16px;
-padding-top: 15px;
-
-background-color: white;
-
-border-radius: 3px;
-border: 1px solid var(--color-gray);
-
-font-size: 16px;
-font-weight: bold;
-
-:disabled {
-  cursor: no-drop;
-  background-color: #efefef;
-}
-
-:lang(ko) {
-  word-break: keep-all;
-}
-`;
+import { Textarea } from '../atoms/Form/Textarea';
 
 interface Anonymous {
     readonly title: string;
@@ -72,7 +43,7 @@ const AnonymousPage: React.FC = () => {
             [type]: e.target.value
         }));
     };
-    const camelCase = async () => {
+    const onWrittenClick = async () => {
         if (written.title.trim() === '' || written.contents.trim() === '') {
             toast.error('제목 또는 내용이 빈칸입니다');
             return;
@@ -96,12 +67,7 @@ const AnonymousPage: React.FC = () => {
 
     return (
         <DefaultLayout>
-            <Helmet>
-                <title>익명페이지 - 수정과</title>
-            </Helmet>
-            <MainSideBar>
-                <MainSideBar />
-                <StyledContent>
+     
                     <Heading1>익명 건의함</Heading1>
                     <Heading3>익명으로 글을 작성하실 수 있습니다</Heading3>
                     <Gap gap={30} />
@@ -116,7 +82,7 @@ const AnonymousPage: React.FC = () => {
                     <Gap gap={10} />
                     
                     <RoundHeading2>내용을 입력해주세요</RoundHeading2>
-                    <StyledTextAreaContents
+                    <Textarea
                         placeholder="내용"
                         value={written.contents}
                         onChange={(e) => onContentsChange(e, 'contents')}
@@ -124,7 +90,7 @@ const AnonymousPage: React.FC = () => {
                         rows={30}
                     />
                     <Gap gap={30} />
-                    <Button onClick={camelCase} >제출하기</Button>
+                    <Button onClick={onWrittenClick} >제출하기</Button>
                     <Gap gap={30} />
                     <RoundHeading2>익명리스트</RoundHeading2>
                     {
@@ -134,8 +100,8 @@ const AnonymousPage: React.FC = () => {
                             );
                         })
                     }
-                </StyledContent>
-            </MainSideBar>
+               
+            
         </DefaultLayout>
     )
 
