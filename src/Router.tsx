@@ -6,7 +6,6 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import PrivacyPage from './pages/PrivacyPage';
 import ToSPage from './pages/ToSPage';
-import MealPage from './pages/MealPage';
 import MyPage from './pages/MyPage';
 import AnonymousPage from './pages/AnonymousPage';
 
@@ -18,12 +17,17 @@ const Router: React.FC = () => {
       <Switch>
         <PermissionRoute path="/" success={() => MainPage} failure={() => RedirectLogin('/')} exact />
         <PermissionRoute path="/me" success={() => MyPage} failure={() => RedirectLogin('/me')} exact />
+        <PermissionRoute
+          path="/anonymous"
+          success={() => AnonymousPage}
+          failure={() => RedirectLogin('/anonymous')}
+          exact
+        />
         <PermissionRoute path="/login" success={(q) => () => <Redirect to={q || '/'} />} failure={LoginPage} exact />
+
         <Route path="/register" component={RegisterPage} exact />
         <Route path="/privacy" component={PrivacyPage} exact />
         <Route path="/tos" component={ToSPage} exact />
-        <Route path="/meal" component={MealPage} exact />
-        <PermissionRoute path="/anonymous" success={() => AnonymousPage} failure={() => RedirectLogin('/anonymous')} exact />
       </Switch>
     </BrowserRouter>
   );
