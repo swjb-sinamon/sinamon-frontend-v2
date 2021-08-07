@@ -40,5 +40,5 @@ export interface ComciganTimetableType {
 }
 export interface ApiAnonymous {
   readonly title: string;
-  readonly contents: string;
+  readonly content: string;
 }

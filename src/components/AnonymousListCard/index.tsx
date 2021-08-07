@@ -31,9 +31,9 @@ const AnonymousListCard: React.FC<AnonymousListCardProps> = ({ title, contents }
   return (
     <Box>
       <Title>{title} </Title>
-      < Gap gap={16} />
+      <Gap gap={16} />
 
-      <Contents>{contents} </Contents>
+      <Contents>{contents}</Contents>
     </Box>
   );
 };
