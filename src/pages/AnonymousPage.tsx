@@ -49,7 +49,7 @@ const AnonymousPage: React.FC = () => {
 
     await Api.post('/anonymous', {
       title: written.title,
-      contents: written.contents
+      content: written.contents
     });
 
     toast.success('제출완료!');
