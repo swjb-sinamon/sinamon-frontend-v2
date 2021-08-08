@@ -12,7 +12,6 @@ const StyledHeading3 = styled(Heading3)`
 `;
 
 const Box = styled.div`
-  padding: 32px;
   width: 100%;
 `;
 
@@ -35,9 +34,8 @@ const MealBox = styled.div`
   width: 25.5vw;
   height: 300px;
   
-  border-radius: 3px;
   border: 1px solid var(--color-gray);
-  border-radius: 30px;
+  border-radius: 32px;
 
   padding: 2rem 2rem 2.5rem;
   box-shadow: 0 0 30px rgba(169, 169, 169, 0.2);
@@ -51,9 +49,8 @@ const MealBox = styled.div`
     width: 100%;
     height: 400px;
    
-    border-radius: 3px;
     border: 1px solid var(--color-gray);
-    border-radius: 30px;
+    border-radius: 32px;
     
     box-shadow: 0 0 30px rgba(169, 169, 169, 0.2); 
     margin-bottom: 1rem;
@@ -65,12 +62,12 @@ const MealPage = () => {
   return (
     <DefaultLayout>
         <Box>
-          <Heading2>이번주 급식</Heading2>
-          <Gap gap={25} />
+          <Heading2>급식</Heading2>
+          <Gap gap={24} />
           <MealList>
             <MealBox>
               <StyledHeading3>오늘</StyledHeading3>
-              <Gap gap={16} />
+              <Gap gap={32} />
               <p>{today}</p>
             </MealBox>
             <MealBox>
