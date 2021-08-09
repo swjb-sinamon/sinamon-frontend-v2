@@ -8,23 +8,28 @@ import PrivacyPage from './pages/PrivacyPage';
 import ToSPage from './pages/ToSPage';
 import MealPage from './pages/MealPage';
 import MyPage from './pages/MyPage';
+import Timepage from './pages/TimetablePage';
 
 const RedirectLogin = (path: string) => <Redirect to={`/login?q=${path}`} />;
 
-const Router: React.FC = () => {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <PermissionRoute path="/" success={() => MainPage} failure={() => RedirectLogin('/')} exact />
-        <PermissionRoute path="/me" success={() => MyPage} failure={() => RedirectLogin('/me')} exact />
-        <PermissionRoute path="/login" success={(q) => () => <Redirect to={q || '/'} />} failure={LoginPage} exact />
-        <Route path="/register" component={RegisterPage} exact />
-        <Route path="/privacy" component={PrivacyPage} exact />
-        <Route path="/tos" component={ToSPage} exact />
-        <Route path="/meal" component={MealPage} exact />
-      </Switch>
-    </BrowserRouter>
-  );
-};
+const Router: React.FC = () => (
+  <BrowserRouter>
+    <Switch>
+      <PermissionRoute path="/" success={() => MainPage} failure={() => RedirectLogin('/')} exact />
+      <PermissionRoute path="/me" success={() => MyPage} failure={() => RedirectLogin('/me')} exact />
+      <PermissionRoute path="/login" success={(q) => () => <Redirect to={q || '/'} />} failure={LoginPage} exact />
+      <Route path="/register" component={RegisterPage} exact />
+      <Route path="/privacy" component={PrivacyPage} exact />
+      <Route path="/tos" component={ToSPage} exact />
+      <Route path="/meal" component={MealPage} exact />
+      <PermissionRoute
+        path="/Time"
+        success={() => Timepage}
+        failure={() => RedirectLogin('/Time')}
+        exact
+      />
+    </Switch>
+  </BrowserRouter>
+);
 
 export default Router;
