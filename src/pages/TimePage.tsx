@@ -16,8 +16,8 @@ const Box = styled.div`
   padding: 1rem 1.4rem;
 `;
 
-const Text = styled.div`
-  color : var(--color-subtext);
+const p = styled.div`
+  color : var(생략);
 `;
 const TimetableList = styled.div`
   display: flex;
@@ -47,23 +47,15 @@ const TimetableList = styled.div`
   }
 `;
 
-const ContentHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
 const timetableDay = ['월요일', '화요일', '수요일', '목요일', '금요일'];
 
-const Timetablepage: React.FC = () => {
+const TimetablePage: React.FC = () => {
   const timetable = useTimetable();
 
   return (
     <DefaultLayout>
+      <Heading2>이번주 시간표</Heading2>
 
-      <ContentHeader>
-        <Heading2>이번주 시간표</Heading2>
-      </ContentHeader>
 
       <Gap gap={8} />
 
@@ -84,10 +76,10 @@ const Timetablepage: React.FC = () => {
         </TimetableList>
       </Box>
 
-      <Text>* 수정과에서는 시간표 오류에 따른 책임을 지지 않습니다.</Text>
-      <Text>* 4시간 주기로 시간표를 새로고침합니다.</Text>
+      <p>* 수정과에서는 시간표 오류에 따른 책임을 지지 않습니다.</p>
+      <p>* 4시간 주기로 시간표를 새로고침합니다.</p>
     </DefaultLayout>
   );
 };
 
-export default Timetablepage;
+export default TimetablePage;
