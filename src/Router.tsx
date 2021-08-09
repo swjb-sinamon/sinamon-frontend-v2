@@ -8,7 +8,7 @@ import PrivacyPage from './pages/PrivacyPage';
 import ToSPage from './pages/ToSPage';
 import MealPage from './pages/MealPage';
 import MyPage from './pages/MyPage';
-import Timepage from './pages/TimetablePage';
+import Timetablepage from './pages/TimetablePage';
 
 const RedirectLogin = (path: string) => <Redirect to={`/login?q=${path}`} />;
 
@@ -23,9 +23,9 @@ const Router: React.FC = () => (
       <Route path="/tos" component={ToSPage} exact />
       <Route path="/meal" component={MealPage} exact />
       <PermissionRoute
-        path="/Time"
-        success={() => Timepage}
-        failure={() => RedirectLogin('/Time')}
+        path="/timetable"
+        success={() => Timetablepage}
+        failure={() => RedirectLogin('/timetable')}
         exact
       />
     </Switch>
