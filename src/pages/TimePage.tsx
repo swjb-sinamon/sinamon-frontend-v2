@@ -1,16 +1,14 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import DefaultLayout from '../layouts/DefaultLayout';
-import TimetableCard from '../components/TimetableCard/Timepage';
+import TimetableCard from '../components/TimetableCard/index';
 import { Heading2 } from '../atoms/Typography/Heading';
 import { Gap } from '../utils/Gap';
 import { useTimetable } from '../hooks/useTimetable';
 import { Breakpoints, makeMediaQuery } from '../styles/Breakpoint';
-import { Label } from '../atoms/Form/Label';
 
 const Box = styled.div`
   width: 1100px;
-  height: 300px;
 
   border-radius: 24px;
   background-color: white;
@@ -18,6 +16,9 @@ const Box = styled.div`
   padding: 1rem 1.4rem;
 `;
 
+const Text = styled.div`
+  color : var(--color-subtext);
+`;
 const TimetableList = styled.div`
   display: flex;
   flex-direction: row;
@@ -54,17 +55,14 @@ const ContentHeader = styled.div`
 
 const timetableDay = ['월요일', '화요일', '수요일', '목요일', '금요일'];
 
-const Timepage: React.FC = () => {
+const Timetablepage: React.FC = () => {
   const timetable = useTimetable();
 
   return (
     <DefaultLayout>
 
-      <Gap gap={32} />
-
       <ContentHeader>
         <Heading2>이번주 시간표</Heading2>
-        {/* <MoreButton to="/" /> */}
       </ContentHeader>
 
       <Gap gap={8} />
@@ -86,11 +84,10 @@ const Timepage: React.FC = () => {
         </TimetableList>
       </Box>
 
-      <Label>* 수정과에서는 시간표 오류에 따른 책임을 지지 않습니다.</Label>
-      <br />
-      <Label>* 4시간 주기로 시간표를 새로고침합니다.</Label>
+      <Text>* 수정과에서는 시간표 오류에 따른 책임을 지지 않습니다.</Text>
+      <Text>* 4시간 주기로 시간표를 새로고침합니다.</Text>
     </DefaultLayout>
   );
 };
 
-export default Timepage;
+export default Timetablepage;
