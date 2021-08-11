@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core';
-import { RoundHeading3 } from '../../atoms/Typography/Heading';
+import { Heading3 } from '../../atoms/Typography/Heading';
 import { Gap } from '../../utils/Gap';
 import { Breakpoints, makeMediaQuery } from '../../styles/Breakpoint';
 
@@ -28,7 +28,7 @@ const Box = styled.div`
   }
 `;
 
-const StyledTitle = styled(RoundHeading3)`
+const StyledTitle = styled(Heading3)`
   color: var(--color-main);
 `;
 

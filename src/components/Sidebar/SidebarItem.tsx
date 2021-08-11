@@ -21,12 +21,6 @@ const StyledItem = styled.div`
     background-color: var(--color-button);
   }
 
-  margin-bottom: 16px;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-
   ${makeMediaQuery(Breakpoints.MD)} {
     width: 100vw;
     border-radius: 0;

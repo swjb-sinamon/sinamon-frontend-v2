@@ -8,6 +8,7 @@ import {
   faStickyNote,
   faUtensils
 } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import SidebarTitle from './SidebarTitle';
 import SidebarItem from './SidebarItem';
 import { Breakpoints, makeMediaQuery } from '../../styles/Breakpoint';
@@ -27,9 +28,22 @@ const StyledSidebar = styled.div`
 `;
 
 const SidebarList = styled.div<{ open?: boolean }>`
+  & > * {
+    margin-bottom: 16px;
+  }
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+
   ${makeMediaQuery(Breakpoints.MD)} {
     display: ${(props) => (props.open ? 'block' : 'none')};
   }
+`;
+
+const SidebarLink = styled(Link)`
+  display: block;
+  text-decoration: none !important;
 `;
 
 const Sidebar: React.FC = () => {
@@ -54,7 +68,9 @@ const Sidebar: React.FC = () => {
         <SidebarItem icon={faCalendarWeek}>시간표</SidebarItem>
         <SidebarItem icon={faChalkboard}>수강신청</SidebarItem>
         <SidebarItem icon={faSchool}>학사일정</SidebarItem>
-        <SidebarItem icon={faStickyNote}>익명건의함</SidebarItem>
+        <SidebarLink to="/anonymous">
+          <SidebarItem icon={faStickyNote}>익명건의함</SidebarItem>
+        </SidebarLink>
 
         <SidebarItem icon={faSignOutAlt} tabIndex={0} onClick={onLogoutClick}>
           로그아웃

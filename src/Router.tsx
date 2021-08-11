@@ -6,30 +6,38 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import PrivacyPage from './pages/PrivacyPage';
 import ToSPage from './pages/ToSPage';
-import MealPage from './pages/MealPage';
 import MyPage from './pages/MyPage';
-import Timetablepage from './pages/TimetablePage';
+import AnonymousPage from './pages/AnonymousPage';
+import CalendarPage from './pages/CalendarPage';
 
 const RedirectLogin = (path: string) => <Redirect to={`/login?q=${path}`} />;
 
-const Router: React.FC = () => (
-  <BrowserRouter>
-    <Switch>
-      <PermissionRoute path="/" success={() => MainPage} failure={() => RedirectLogin('/')} exact />
-      <PermissionRoute path="/me" success={() => MyPage} failure={() => RedirectLogin('/me')} exact />
-      <PermissionRoute path="/login" success={(q) => () => <Redirect to={q || '/'} />} failure={LoginPage} exact />
-      <Route path="/register" component={RegisterPage} exact />
-      <Route path="/privacy" component={PrivacyPage} exact />
-      <Route path="/tos" component={ToSPage} exact />
-      <Route path="/meal" component={MealPage} exact />
-      <PermissionRoute
-        path="/timetable"
-        success={() => Timetablepage}
-        failure={() => RedirectLogin('/timetable')}
-        exact
-      />
-    </Switch>
-  </BrowserRouter>
-);
+const Router: React.FC = () => {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <PermissionRoute path="/" success={() => MainPage} failure={() => RedirectLogin('/')} exact />
+        <PermissionRoute path="/me" success={() => MyPage} failure={() => RedirectLogin('/me')} exact />
+        <PermissionRoute
+          path="/anonymous"
+          success={() => AnonymousPage}
+          failure={() => RedirectLogin('/anonymous')}
+          exact
+        />
+        <PermissionRoute
+          path="/calendar"
+          success={() => CalendarPage}
+          failure={() => RedirectLogin('/calendar')}
+          exact
+        />
+
+        <PermissionRoute path="/login" success={(q) => () => <Redirect to={q || '/'} />} failure={LoginPage} exact />
+        <Route path="/register" component={RegisterPage} exact />
+        <Route path="/privacy" component={PrivacyPage} exact />
+        <Route path="/tos" component={ToSPage} exact />
+      </Switch>
+    </BrowserRouter>
+  );
+};
 
 export default Router;
