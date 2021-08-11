@@ -64,10 +64,16 @@ const Sidebar: React.FC = () => {
       <SidebarTitle setOpen={setOpen} />
 
       <SidebarList open={isOpen}>
-        <SidebarItem icon={faUtensils}>급식</SidebarItem>
-        <SidebarItem icon={faCalendarWeek}>시간표</SidebarItem>
+        <SidebarLink to="/meal">
+          <SidebarItem icon={faUtensils}>급식</SidebarItem>
+        </SidebarLink>
+        <SidebarLink to="/timetable">
+          <SidebarItem icon={faCalendarWeek}>시간표</SidebarItem>
+        </SidebarLink>
         <SidebarItem icon={faChalkboard}>수강신청</SidebarItem>
-        <SidebarItem icon={faSchool}>학사일정</SidebarItem>
+        <SidebarLink to="/calendar">
+          <SidebarItem icon={faSchool}>학사일정</SidebarItem>
+        </SidebarLink>
         <SidebarLink to="/anonymous">
           <SidebarItem icon={faStickyNote}>익명건의함</SidebarItem>
         </SidebarLink>

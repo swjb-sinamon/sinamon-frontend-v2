@@ -9,6 +9,8 @@ import ToSPage from './pages/ToSPage';
 import MyPage from './pages/MyPage';
 import AnonymousPage from './pages/AnonymousPage';
 import CalendarPage from './pages/CalendarPage';
+import MealPage from './pages/MealPage';
+import TimetablePage from './pages/TimetablePage';
 
 const RedirectLogin = (path: string) => <Redirect to={`/login?q=${path}`} />;
 
@@ -28,6 +30,13 @@ const Router: React.FC = () => {
           path="/calendar"
           success={() => CalendarPage}
           failure={() => RedirectLogin('/calendar')}
+          exact
+        />
+        <PermissionRoute path="/meal" success={() => MealPage} failure={() => RedirectLogin('/meal')} exact />
+        <PermissionRoute
+          path="/timetable"
+          success={() => TimetablePage}
+          failure={() => RedirectLogin('/timetable')}
           exact
         />
 
