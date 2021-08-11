@@ -83,6 +83,3 @@ const TimetablePage: React.FC = () => {
       <Label>* 4시간 주기로 시간표를 새로고침합니다.</Label>
     </DefaultLayout>
   );
-};
-
-export default TimetablePage;
