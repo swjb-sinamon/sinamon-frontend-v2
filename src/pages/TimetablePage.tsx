@@ -6,6 +6,7 @@ import { Heading2 } from '../atoms/Typography/Heading';
 import { Gap } from '../utils/Gap';
 import { useTimetable } from '../hooks/useTimetable';
 import { Breakpoints, makeMediaQuery } from '../styles/Breakpoint';
+import Emoji from '../atoms/Emoji';
 
 const Box = styled.div`
   border-radius: 24px;
@@ -57,7 +58,9 @@ const TimetablePage: React.FC = () => {
 
   return (
     <DefaultLayout>
-      <Heading2>이번주 시간표</Heading2>
+      <Heading2>
+        <Emoji label="books" symbol="📚" /> 이번주 시간표
+      </Heading2>
 
       <Gap gap={32} />
 

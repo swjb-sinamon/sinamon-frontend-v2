@@ -5,6 +5,7 @@ import { Heading2, Heading3 } from '../atoms/Typography/Heading';
 import Api from '../apis';
 import { Gap } from '../utils/Gap';
 import CalendarCard from '../components/CalendarCard';
+import Emoji from '../atoms/Emoji';
 
 const CardList = styled.div`
   display: flex;
@@ -43,7 +44,9 @@ const CalendarPage: React.FC = () => {
 
   return (
     <DefaultLayout>
-      <Heading2>📆 학사일정</Heading2>
+      <Heading2>
+        <Emoji label="calendar" symbol="📆" /> 학사일정
+      </Heading2>
 
       <Gap gap={32} />
 

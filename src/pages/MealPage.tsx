@@ -5,6 +5,7 @@ import { Heading2, Heading3 } from '../atoms/Typography/Heading';
 import { Gap } from '../utils/Gap';
 import { useMeal } from '../hooks/useMeal';
 import { Breakpoints, makeMediaQuery } from '../styles/Breakpoint';
+import Emoji from '../atoms/Emoji';
 
 const StyledHeading3 = styled(Heading3)`
   color: var(--color-main);
@@ -62,7 +63,9 @@ const MealPage = () => {
 
   return (
     <DefaultLayout>
-      <Heading2>급식</Heading2>
+      <Heading2>
+        <Emoji label="meal" symbol="🍚" /> 급식
+      </Heading2>
 
       <Gap gap={32} />
 

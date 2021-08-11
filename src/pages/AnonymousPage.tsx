@@ -9,6 +9,7 @@ import Api from '../apis';
 import { ApiAnonymous } from '../types/ApiResponse';
 import DefaultLayout from '../layouts/DefaultLayout';
 import { Textarea } from '../atoms/Form/Textarea';
+import Emoji from '../atoms/Emoji';
 
 interface Anonymous {
   readonly title: string;
@@ -64,7 +65,9 @@ const AnonymousPage: React.FC = () => {
 
   return (
     <DefaultLayout>
-      <Heading2>익명 건의함</Heading2>
+      <Heading2>
+        <Emoji label="mailbox" symbol="📫" /> 익명 건의함
+      </Heading2>
 
       <Gap gap={32} />
 
