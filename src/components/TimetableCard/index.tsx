@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { HTMLProps } from 'react';
 import styled from '@emotion/styled';
 import { Gap } from '../../utils/Gap';
 import { Heading3 } from '../../atoms/Typography/Heading';
@@ -26,9 +26,9 @@ interface TimetableCardProps {
   readonly day: string;
 }
 
-const TimetableCard: React.FC<TimetableCardProps> = ({ day, children }) => {
+const TimetableCard: React.FC<TimetableCardProps & HTMLProps<HTMLDivElement>> = ({ day, children, className }) => {
   return (
-    <Box>
+    <Box className={className}>
       <DayTitle>{day}</DayTitle>
       <Gap gap={16} />
       <Content>{children}</Content>
