@@ -8,9 +8,6 @@ import { useTimetable } from '../hooks/useTimetable';
 import { Breakpoints, makeMediaQuery } from '../styles/Breakpoint';
 
 const Box = styled.div`
-  width: 1100px;
-  height: 450px;
-
   border-radius: 24px;
   background-color: white;
 
@@ -19,6 +16,10 @@ const Box = styled.div`
 
 const Label = styled.p`
   color: var(--color-subtext);
+`;
+
+const FullTimetableCard = styled(TimetableCard)`
+  height: 100%;
 `;
 
 const TimetableList = styled.div`
@@ -64,7 +65,7 @@ const TimetablePage: React.FC = () => {
         <TimetableList>
           {timetable.map((todayTime, index) => (
             // eslint-disable-next-line react/no-array-index-key
-            <TimetableCard key={`timetable-${index}`} day={timetableDay[index]}>
+            <FullTimetableCard key={`timetable-${index}`} day={timetableDay[index]}>
               {todayTime.map((time, j) => (
                 // eslint-disable-next-line react/no-array-index-key
                 <React.Fragment key={`timeitem-${index}${j}`}>
@@ -74,7 +75,7 @@ const TimetablePage: React.FC = () => {
                   <Gap gap={8} />
                 </React.Fragment>
               ))}
-            </TimetableCard>
+            </FullTimetableCard>
           ))}
         </TimetableList>
       </Box>
