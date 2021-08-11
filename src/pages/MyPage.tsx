@@ -9,6 +9,7 @@ import { Button } from '../atoms/Button';
 import MyPageForm from '../components/MyPage/MyPageForm';
 import { useProfile } from '../hooks/useProfile';
 import Api from '../apis';
+import Emoji from '../atoms/Emoji';
 
 const TipMessage = styled.p`
   color: var(--color-subtext);
@@ -48,7 +49,9 @@ const MyPage: React.FC = () => {
 
   return (
     <DefaultLayout>
-      <Heading2>{profile?.name} 님의 계정</Heading2>
+      <Heading2>
+        <Emoji label="hand" symbol="👋" /> {profile?.name} 님의 계정
+      </Heading2>
       <TipMessage>아이디, 이름은 변경할 수 없습니다.</TipMessage>
 
       <Gap gap={32} />
