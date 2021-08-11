@@ -58,7 +58,7 @@ const MealBox = styled.div`
   }
 `;
 
-const MealPage = () => {
+const MealPage: React.FC = () => {
   const { today, tomorrow } = useMeal();
 
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ToSPage = () => {
+const ToSPage: React.FC = () => {
   return (
     <>
       <p>이용약관</p>
