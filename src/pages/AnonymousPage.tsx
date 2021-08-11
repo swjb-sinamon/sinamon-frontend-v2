@@ -66,7 +66,8 @@ const AnonymousPage: React.FC = () => {
     <DefaultLayout>
       <Heading2>익명 건의함</Heading2>
 
-      <Gap gap={30} />
+      <Gap gap={32} />
+
       <RoundHeading2>제목을 적어주세요</RoundHeading2>
       <Input
         placeholder="제목"

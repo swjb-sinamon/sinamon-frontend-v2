@@ -73,6 +73,7 @@ const MealPage = () => {
             <Gap gap={32} />
             <p>{today}</p>
           </MealBox>
+
           <MealBox>
             <StyledHeading3>내일</StyledHeading3>
             <Gap gap={16} />
