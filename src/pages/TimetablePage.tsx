@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import DefaultLayout from '../layouts/DefaultLayout';
-import TimetableCard from '../components/TimetableCard/index';
+import TimetableCard from '../components/TimetableCard';
 import { Heading2 } from '../atoms/Typography/Heading';
 import { Gap } from '../utils/Gap';
 import { useTimetable } from '../hooks/useTimetable';
@@ -17,9 +17,10 @@ const Box = styled.div`
   padding: 1rem 1.4rem;
 `;
 
-const Label = styled.p` 
-  color : var(--color-subtext);
+const Label = styled.p`
+  color: var(--color-subtext);
 `;
+
 const TimetableList = styled.div`
   display: flex;
   flex-direction: row;
@@ -57,8 +58,7 @@ const TimetablePage: React.FC = () => {
     <DefaultLayout>
       <Heading2>이번주 시간표</Heading2>
 
-
-      <Gap gap={8} />
+      <Gap gap={32} />
 
       <Box>
         <TimetableList>
@@ -78,6 +78,8 @@ const TimetablePage: React.FC = () => {
           ))}
         </TimetableList>
       </Box>
+
+      <Gap gap={8} />
 
       <Label>* 수정과에서는 시간표 오류에 따른 책임을 지지 않습니다.</Label>
       <Label>* 4시간 주기로 시간표를 새로고침합니다.</Label>
