@@ -6,11 +6,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import PrivacyPage from './pages/PrivacyPage';
 import ToSPage from './pages/ToSPage';
-import MyPage from './pages/MyPage';
-import AnonymousPage from './pages/AnonymousPage';
-import CalendarPage from './pages/CalendarPage';
-import MealPage from './pages/MealPage';
-import TimetablePage from './pages/TimetablePage';
+import { PageList } from './stores/PageList';
 
 const RedirectLogin = (path: string) => <Redirect to={`/login?q=${path}`} />;
 
@@ -19,26 +15,15 @@ const Router: React.FC = () => {
     <BrowserRouter>
       <Switch>
         <PermissionRoute path="/" success={() => MainPage} failure={() => RedirectLogin('/')} exact />
-        <PermissionRoute path="/me" success={() => MyPage} failure={() => RedirectLogin('/me')} exact />
-        <PermissionRoute
-          path="/anonymous"
-          success={() => AnonymousPage}
-          failure={() => RedirectLogin('/anonymous')}
-          exact
-        />
-        <PermissionRoute
-          path="/calendar"
-          success={() => CalendarPage}
-          failure={() => RedirectLogin('/calendar')}
-          exact
-        />
-        <PermissionRoute path="/meal" success={() => MealPage} failure={() => RedirectLogin('/meal')} exact />
-        <PermissionRoute
-          path="/timetable"
-          success={() => TimetablePage}
-          failure={() => RedirectLogin('/timetable')}
-          exact
-        />
+
+        {PageList.map((page) => (
+          <PermissionRoute
+            path={page.path}
+            success={() => page.component}
+            failure={() => RedirectLogin(page.path)}
+            exact
+          />
+        ))}
 
         <PermissionRoute path="/login" success={(q) => () => <Redirect to={q || '/'} />} failure={LoginPage} exact />
         <Route path="/register" component={RegisterPage} exact />

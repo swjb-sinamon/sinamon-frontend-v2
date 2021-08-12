@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import {
-  faCalendarWeek,
-  faChalkboard,
-  faSchool,
-  faSignOutAlt,
-  faStickyNote,
-  faUtensils
-} from '@fortawesome/free-solid-svg-icons';
+import { faSchool, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import SidebarTitle from './SidebarTitle';
 import SidebarItem from './SidebarItem';
 import { Breakpoints, makeMediaQuery } from '../../styles/Breakpoint';
 import Api from '../../apis';
+import { PageList } from '../../stores/PageList';
 
 const StyledSidebar = styled.div`
   min-height: 100vh;
@@ -64,19 +58,14 @@ const Sidebar: React.FC = () => {
       <SidebarTitle setOpen={setOpen} />
 
       <SidebarList open={isOpen}>
-        <SidebarLink to="/meal">
-          <SidebarItem icon={faUtensils}>급식</SidebarItem>
-        </SidebarLink>
-        <SidebarLink to="/timetable">
-          <SidebarItem icon={faCalendarWeek}>시간표</SidebarItem>
-        </SidebarLink>
-        <SidebarItem icon={faChalkboard}>수강신청</SidebarItem>
-        <SidebarLink to="/calendar">
-          <SidebarItem icon={faSchool}>학사일정</SidebarItem>
-        </SidebarLink>
-        <SidebarLink to="/anonymous">
-          <SidebarItem icon={faStickyNote}>익명건의함</SidebarItem>
-        </SidebarLink>
+        {PageList.map(
+          (page) =>
+            !page.onlyRouter && (
+              <SidebarLink to={page.path}>
+                <SidebarItem icon={page.icon || faSchool}>{page.name}</SidebarItem>
+              </SidebarLink>
+            )
+        )}
 
         <SidebarItem icon={faSignOutAlt} tabIndex={0} onClick={onLogoutClick}>
           로그아웃
