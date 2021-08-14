@@ -42,6 +42,7 @@ const SidebarLink = styled(Link)`
 
 const BottomMenu = styled.p`
   color: var(--color-subtext);
+  font-size: 14px;
   text-align: center;
   margin-bottom: 1rem !important;
 `;

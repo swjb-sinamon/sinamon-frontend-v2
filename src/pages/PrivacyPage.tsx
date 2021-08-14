@@ -1,10 +1,14 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import styled from '@emotion/styled';
+import { useHistory } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Breakpoints, makeMediaQuery } from '../styles/Breakpoint';
 import { Heading1, Heading2 } from '../atoms/Typography/Heading';
 import { Gap } from '../utils/Gap';
 import { TableBody, TableBodyItem, TableContainer, TableHeader, TableHeaderItem } from '../atoms/Table';
+import { Button } from '../atoms/Button';
 
 const Title = styled.h1`
   color: transparent;
@@ -46,6 +50,8 @@ const Container = styled.div`
 `;
 
 const PrivacyPage: React.FC = () => {
+  const history = useHistory();
+
   return (
     <>
       <Helmet>
@@ -53,6 +59,12 @@ const PrivacyPage: React.FC = () => {
       </Helmet>
 
       <Container>
+        <Gap gap={24} />
+        <Button fontSize="14" onClick={() => history.goBack()}>
+          <FontAwesomeIcon icon={faArrowLeft} /> 뒤로가기
+        </Button>
+        <Gap gap={24} />
+
         <Title>수정과</Title>
         <SubTitle>개인정보처리방침</SubTitle>
         <Gap gap={24} />
