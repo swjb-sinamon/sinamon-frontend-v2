@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useHistory } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { RoundHeading1 } from '../atoms/Typography/Heading';
 import { Gap } from '../utils/Gap';
 import { Input } from '../atoms/Form/Input';
@@ -82,55 +83,61 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <Container>
-      <LeftContent>
-        <LoginHeader />
-        <LoginMealView />
-      </LeftContent>
+    <>
+      <Helmet>
+        <title>로그인 - 수정과</title>
+      </Helmet>
 
-      <div>
-        <RoundHeading1>로그인하기</RoundHeading1>
-        <Gap gap={24} />
+      <Container>
+        <LeftContent>
+          <LoginHeader />
+          <LoginMealView />
+        </LeftContent>
 
         <div>
-          <Label htmlFor="id">아이디</Label>
-          <Gap gap={4} />
-          <Input id="id" type="text" autoFocus {...register('id', { required: true })} />
-          <InputError formError={errors.id} type="required">
-            아이디 칸이 비어있습니다.
-          </InputError>
-
-          <Gap gap={16} />
-
-          <Label htmlFor="password">비밀번호</Label>
-          <Gap gap={4} />
-          <Input
-            id="password"
-            type="password"
-            {...register('password', { required: true })}
-            onKeyPress={(e) => {
-              if (e.key === 'Enter') {
-                handleSubmit(onLoginClick)();
-              }
-            }}
-          />
-          <InputError formError={errors.password} type="required">
-            비밀번호 칸이 비어있습니다.
-          </InputError>
-
+          <RoundHeading1>로그인하기</RoundHeading1>
           <Gap gap={24} />
 
-          <LoginButtonGroup>
-            <Button fontSize="16" onClick={handleSubmit(onLoginClick)}>
-              로그인
-            </Button>
-            <Button fontSize="16" onClick={() => history.push('/register')}>
-              회원가입
-            </Button>
-          </LoginButtonGroup>
+          <div>
+            <Label htmlFor="id">아이디</Label>
+            <Gap gap={4} />
+            <Input id="id" type="text" autoFocus {...register('id', { required: true })} />
+            <InputError formError={errors.id} type="required">
+              아이디 칸이 비어있습니다.
+            </InputError>
+
+            <Gap gap={16} />
+
+            <Label htmlFor="password">비밀번호</Label>
+            <Gap gap={4} />
+            <Input
+              id="password"
+              type="password"
+              {...register('password', { required: true })}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  handleSubmit(onLoginClick)();
+                }
+              }}
+            />
+            <InputError formError={errors.password} type="required">
+              비밀번호 칸이 비어있습니다.
+            </InputError>
+
+            <Gap gap={24} />
+
+            <LoginButtonGroup>
+              <Button fontSize="16" onClick={handleSubmit(onLoginClick)}>
+                로그인
+              </Button>
+              <Button fontSize="16" onClick={() => history.push('/register')}>
+                회원가입
+              </Button>
+            </LoginButtonGroup>
+          </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </>
   );
 };
 

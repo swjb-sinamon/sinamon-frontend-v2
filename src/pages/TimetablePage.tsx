@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { Helmet } from 'react-helmet-async';
 import DefaultLayout from '../layouts/DefaultLayout';
 import TimetableCard from '../components/TimetableCard';
 import { Heading2 } from '../atoms/Typography/Heading';
@@ -57,37 +58,43 @@ const TimetablePage: React.FC = () => {
   const timetable = useTimetable();
 
   return (
-    <DefaultLayout>
-      <Heading2>
-        <Emoji label="books" symbol="📚" /> 이번주 시간표
-      </Heading2>
+    <>
+      <Helmet>
+        <title>시간표 - 수정과</title>
+      </Helmet>
 
-      <Gap gap={32} />
+      <DefaultLayout>
+        <Heading2>
+          <Emoji label="books" symbol="📚" /> 이번주 시간표
+        </Heading2>
 
-      <Box>
-        <TimetableList>
-          {timetable.map((todayTime, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <FullTimetableCard key={`timetable-${index}`} day={timetableDay[index]}>
-              {todayTime.map((time, j) => (
-                // eslint-disable-next-line react/no-array-index-key
-                <React.Fragment key={`timeitem-${index}${j}`}>
-                  {time.subject}
-                  <br />
-                  {time.teacher}
-                  <Gap gap={8} />
-                </React.Fragment>
-              ))}
-            </FullTimetableCard>
-          ))}
-        </TimetableList>
-      </Box>
+        <Gap gap={32} />
 
-      <Gap gap={8} />
+        <Box>
+          <TimetableList>
+            {timetable.map((todayTime, index) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <FullTimetableCard key={`timetable-${index}`} day={timetableDay[index]}>
+                {todayTime.map((time, j) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <React.Fragment key={`timeitem-${index}${j}`}>
+                    {time.subject}
+                    <br />
+                    {time.teacher}
+                    <Gap gap={8} />
+                  </React.Fragment>
+                ))}
+              </FullTimetableCard>
+            ))}
+          </TimetableList>
+        </Box>
 
-      <Label>* 수정과에서는 시간표 오류에 따른 책임을 지지 않습니다.</Label>
-      <Label>* 4시간 주기로 시간표를 새로고침합니다.</Label>
-    </DefaultLayout>
+        <Gap gap={8} />
+
+        <Label>* 수정과에서는 시간표 오류에 따른 책임을 지지 않습니다.</Label>
+        <Label>* 4시간 주기로 시간표를 새로고침합니다.</Label>
+      </DefaultLayout>
+    </>
   );
 };
 

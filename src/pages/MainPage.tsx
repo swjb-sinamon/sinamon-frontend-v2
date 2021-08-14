@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { faEgg, faFish } from '@fortawesome/free-solid-svg-icons';
+import { Helmet } from 'react-helmet-async';
 import DefaultLayout from '../layouts/DefaultLayout';
 import TimetableCard from '../components/TimetableCard';
 import { Heading2 } from '../atoms/Typography/Heading';
@@ -90,47 +91,53 @@ const MainPage: React.FC = () => {
   const timetable = useTimetable();
 
   return (
-    <DefaultLayout>
-      <TopContainer>
-        <WeatherNoticeContainer>
-          <WeatherCard />
-          <Notice />
-        </WeatherNoticeContainer>
+    <>
+      <Helmet>
+        <title>수정과, 학교를 더 시원하게</title>
+      </Helmet>
 
-        <MealList>
-          <MealCard title="오늘 급식" icon={faFish} iconSize="5x">
-            {today}
-          </MealCard>
-          <MealCard title="내일 급식" icon={faEgg} iconSize="4x" iconOffset={10}>
-            {tomorrow}
-          </MealCard>
-        </MealList>
-      </TopContainer>
+      <DefaultLayout>
+        <TopContainer>
+          <WeatherNoticeContainer>
+            <WeatherCard />
+            <Notice />
+          </WeatherNoticeContainer>
 
-      <Gap gap={32} />
+          <MealList>
+            <MealCard title="오늘 급식" icon={faFish} iconSize="5x">
+              {today}
+            </MealCard>
+            <MealCard title="내일 급식" icon={faEgg} iconSize="4x" iconOffset={10}>
+              {tomorrow}
+            </MealCard>
+          </MealList>
+        </TopContainer>
 
-      <ContentHeader>
-        <Heading2>이번주 시간표</Heading2>
-        <MoreButton to="/" />
-      </ContentHeader>
+        <Gap gap={32} />
 
-      <Gap gap={8} />
+        <ContentHeader>
+          <Heading2>이번주 시간표</Heading2>
+          <MoreButton to="/" />
+        </ContentHeader>
 
-      <TimetableList>
-        {timetable.map((todayTime, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <TimetableCard key={`timetable-${index}`} day={timetableDay[index]}>
-            {todayTime.map((time, j) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <React.Fragment key={`timeitem-${index}${j}`}>
-                {time.subject}
-                <br />
-              </React.Fragment>
-            ))}
-          </TimetableCard>
-        ))}
-      </TimetableList>
-    </DefaultLayout>
+        <Gap gap={8} />
+
+        <TimetableList>
+          {timetable.map((todayTime, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <TimetableCard key={`timetable-${index}`} day={timetableDay[index]}>
+              {todayTime.map((time, j) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <React.Fragment key={`timeitem-${index}${j}`}>
+                  {time.subject}
+                  <br />
+                </React.Fragment>
+              ))}
+            </TimetableCard>
+          ))}
+        </TimetableList>
+      </DefaultLayout>
+    </>
   );
 };
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 import { Gap } from '../utils/Gap';
 import { Heading2, RoundHeading2 } from '../atoms/Typography/Heading';
 import AnonymousListCard from '../components/AnonymousListCard';
@@ -64,39 +65,45 @@ const AnonymousPage: React.FC = () => {
   }, []);
 
   return (
-    <DefaultLayout>
-      <Heading2>
-        <Emoji label="mailbox" symbol="📫" /> 익명 건의함
-      </Heading2>
+    <>
+      <Helmet>
+        <title>익명 건의함 - 수정과</title>
+      </Helmet>
 
-      <Gap gap={32} />
+      <DefaultLayout>
+        <Heading2>
+          <Emoji label="mailbox" symbol="📫" /> 익명 건의함
+        </Heading2>
 
-      <RoundHeading2>제목을 적어주세요</RoundHeading2>
-      <Input
-        placeholder="제목"
-        title={written.title}
-        type="text"
-        onChange={(e) => onTitleChange(e, 'title')}
-        width={385}
-      />
-      <Gap gap={10} />
+        <Gap gap={32} />
 
-      <RoundHeading2>내용을 입력해주세요</RoundHeading2>
-      <Textarea
-        placeholder="내용"
-        value={written.contents}
-        onChange={(e) => onContentsChange(e, 'contents')}
-        cols={50}
-        rows={15}
-      />
-      <Gap gap={30} />
-      <Button onClick={onWrittenClick}>제출하기</Button>
-      <Gap gap={30} />
-      <RoundHeading2>익명리스트</RoundHeading2>
-      {apiWritten.map((item) => {
-        return <AnonymousListCard title={item.title} contents={item.content} />;
-      })}
-    </DefaultLayout>
+        <RoundHeading2>제목을 적어주세요</RoundHeading2>
+        <Input
+          placeholder="제목"
+          title={written.title}
+          type="text"
+          onChange={(e) => onTitleChange(e, 'title')}
+          width={385}
+        />
+        <Gap gap={10} />
+
+        <RoundHeading2>내용을 입력해주세요</RoundHeading2>
+        <Textarea
+          placeholder="내용"
+          value={written.contents}
+          onChange={(e) => onContentsChange(e, 'contents')}
+          cols={50}
+          rows={15}
+        />
+        <Gap gap={30} />
+        <Button onClick={onWrittenClick}>제출하기</Button>
+        <Gap gap={30} />
+        <RoundHeading2>익명리스트</RoundHeading2>
+        {apiWritten.map((item) => {
+          return <AnonymousListCard title={item.title} contents={item.content} />;
+        })}
+      </DefaultLayout>
+    </>
   );
 };
 export default AnonymousPage;

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 import DefaultLayout from '../layouts/DefaultLayout';
 import { Heading2 } from '../atoms/Typography/Heading';
 import { Gap } from '../utils/Gap';
@@ -48,28 +49,34 @@ const MyPage: React.FC = () => {
   };
 
   return (
-    <DefaultLayout>
-      <Heading2>
-        <Emoji label="hand" symbol="👋" /> {profile?.name} 님의 계정
-      </Heading2>
-      <TipMessage>아이디, 이름은 변경할 수 없습니다.</TipMessage>
+    <>
+      <Helmet>
+        <title>내 계정 - 수정과</title>
+      </Helmet>
 
-      <Gap gap={32} />
+      <DefaultLayout>
+        <Heading2>
+          <Emoji label="hand" symbol="👋" /> {profile?.name} 님의 계정
+        </Heading2>
+        <TipMessage>아이디, 이름은 변경할 수 없습니다.</TipMessage>
 
-      {profile && (
-        <MyPageForm
-          register={register}
-          formState={formState}
-          control={control}
-          getValues={getValues}
-          profile={profile}
-        />
-      )}
+        <Gap gap={32} />
 
-      <Gap gap={32} />
+        {profile && (
+          <MyPageForm
+            register={register}
+            formState={formState}
+            control={control}
+            getValues={getValues}
+            profile={profile}
+          />
+        )}
 
-      <Button onClick={handleSubmit(onButtonClick)}>수정하기</Button>
-    </DefaultLayout>
+        <Gap gap={32} />
+
+        <Button onClick={handleSubmit(onButtonClick)}>수정하기</Button>
+      </DefaultLayout>
+    </>
   );
 };
 

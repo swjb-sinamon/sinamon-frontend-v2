@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
+import { Helmet } from 'react-helmet-async';
 import DefaultLayout from '../layouts/DefaultLayout';
 import { Heading2, Heading3 } from '../atoms/Typography/Heading';
 import Api from '../apis';
@@ -43,31 +44,37 @@ const CalendarPage: React.FC = () => {
   }, []);
 
   return (
-    <DefaultLayout>
-      <Heading2>
-        <Emoji label="calendar" symbol="📆" /> 학사일정
-      </Heading2>
+    <>
+      <Helmet>
+        <title>학사일정 - 수정과</title>
+      </Helmet>
 
-      <Gap gap={32} />
+      <DefaultLayout>
+        <Heading2>
+          <Emoji label="calendar" symbol="📆" /> 학사일정
+        </Heading2>
 
-      <Heading3>
-        오늘은 <Highlight>{`${now.getMonth() + 1}월 ${now.getDate()}일 ${HEADER_DAY_NAME[now.getDay()]}`}</Highlight>{' '}
-        입니다.
-      </Heading3>
+        <Gap gap={32} />
 
-      <Gap gap={16} />
+        <Heading3>
+          오늘은 <Highlight>{`${now.getMonth() + 1}월 ${now.getDate()}일 ${HEADER_DAY_NAME[now.getDay()]}`}</Highlight>{' '}
+          입니다.
+        </Heading3>
 
-      <CardList>
-        {DAY_NAME.map((day, index) => {
-          const date = getDateByWeekday(index);
-          return (
-            <CalendarCard key={day} day={day} date={date} isToday={date === now.getDate()}>
-              {calendar[index] || '일정이 없습니다.'}
-            </CalendarCard>
-          );
-        })}
-      </CardList>
-    </DefaultLayout>
+        <Gap gap={16} />
+
+        <CardList>
+          {DAY_NAME.map((day, index) => {
+            const date = getDateByWeekday(index);
+            return (
+              <CalendarCard key={day} day={day} date={date} isToday={date === now.getDate()}>
+                {calendar[index] || '일정이 없습니다.'}
+              </CalendarCard>
+            );
+          })}
+        </CardList>
+      </DefaultLayout>
+    </>
   );
 };
 

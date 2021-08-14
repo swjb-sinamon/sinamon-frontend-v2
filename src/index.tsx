@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Toaster } from 'react-hot-toast';
+import { HelmetProvider } from 'react-helmet-async';
 import reportWebVitals from './reportWebVitals';
 import Router from './Router';
 import GlobalStyle from './styles/Global';
@@ -11,24 +12,26 @@ import { TimetableProvider } from './hooks/useTimetable';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ProfileProvider>
-      <MealProvider>
-        <WeatherProvider>
-          <TimetableProvider>
-            <Toaster
-              position="top-right"
-              toastOptions={{
-                style: {
-                  fontSize: '14px'
-                }
-              }}
-            />
-            <GlobalStyle />
-            <Router />
-          </TimetableProvider>
-        </WeatherProvider>
-      </MealProvider>
-    </ProfileProvider>
+    <HelmetProvider>
+      <ProfileProvider>
+        <MealProvider>
+          <WeatherProvider>
+            <TimetableProvider>
+              <Toaster
+                position="top-right"
+                toastOptions={{
+                  style: {
+                    fontSize: '14px'
+                  }
+                }}
+              />
+              <GlobalStyle />
+              <Router />
+            </TimetableProvider>
+          </WeatherProvider>
+        </MealProvider>
+      </ProfileProvider>
+    </HelmetProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

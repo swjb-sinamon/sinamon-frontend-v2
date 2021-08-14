@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 import { Heading3, RoundHeading1 } from '../atoms/Typography/Heading';
 import { Breakpoints, makeMediaQuery } from '../styles/Breakpoint';
 import { Gap } from '../utils/Gap';
@@ -115,22 +116,28 @@ const RegisterPage: React.FC = () => {
   };
 
   return (
-    <Container>
-      <RoundHeading1>회원가입</RoundHeading1>
-      <StyledHeading3>학교를 더 시원하게, IT소프트웨어과 인트라넷</StyledHeading3>
-      <Gap gap={32} />
+    <>
+      <Helmet>
+        <title>회원가입 - 수정과</title>
+      </Helmet>
 
-      <FormBox>
-        <RegisterForm register={register} formState={formState} control={control} />
-      </FormBox>
+      <Container>
+        <RoundHeading1>회원가입</RoundHeading1>
+        <StyledHeading3>학교를 더 시원하게, IT소프트웨어과 인트라넷</StyledHeading3>
+        <Gap gap={32} />
 
-      <Gap gap={32} />
+        <FormBox>
+          <RegisterForm register={register} formState={formState} control={control} />
+        </FormBox>
 
-      <ButtonGroup>
-        <Button onClick={() => history.goBack()}>뒤로가기</Button>
-        <Button onClick={handleSubmit(onRegisterClick)}>회원가입</Button>
-      </ButtonGroup>
-    </Container>
+        <Gap gap={32} />
+
+        <ButtonGroup>
+          <Button onClick={() => history.goBack()}>뒤로가기</Button>
+          <Button onClick={handleSubmit(onRegisterClick)}>회원가입</Button>
+        </ButtonGroup>
+      </Container>
+    </>
   );
 };
 

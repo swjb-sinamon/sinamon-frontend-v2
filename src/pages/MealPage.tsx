@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { Helmet } from 'react-helmet-async';
 import DefaultLayout from '../layouts/DefaultLayout';
 import { Heading2, Heading3 } from '../atoms/Typography/Heading';
 import { Gap } from '../utils/Gap';
@@ -62,29 +63,35 @@ const MealPage: React.FC = () => {
   const { today, tomorrow } = useMeal();
 
   return (
-    <DefaultLayout>
-      <Heading2>
-        <Emoji label="meal" symbol="🍚" /> 급식
-      </Heading2>
+    <>
+      <Helmet>
+        <title>급식 - 수정과</title>
+      </Helmet>
 
-      <Gap gap={32} />
+      <DefaultLayout>
+        <Heading2>
+          <Emoji label="meal" symbol="🍚" /> 급식
+        </Heading2>
 
-      <Box>
-        <MealList>
-          <MealBox>
-            <StyledHeading3>오늘</StyledHeading3>
-            <Gap gap={32} />
-            <p>{today}</p>
-          </MealBox>
+        <Gap gap={32} />
 
-          <MealBox>
-            <StyledHeading3>내일</StyledHeading3>
-            <Gap gap={16} />
-            <p>{tomorrow}</p>
-          </MealBox>
-        </MealList>
-      </Box>
-    </DefaultLayout>
+        <Box>
+          <MealList>
+            <MealBox>
+              <StyledHeading3>오늘</StyledHeading3>
+              <Gap gap={32} />
+              <p>{today}</p>
+            </MealBox>
+
+            <MealBox>
+              <StyledHeading3>내일</StyledHeading3>
+              <Gap gap={16} />
+              <p>{tomorrow}</p>
+            </MealBox>
+          </MealList>
+        </Box>
+      </DefaultLayout>
+    </>
   );
 };
 
