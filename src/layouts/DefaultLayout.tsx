@@ -21,10 +21,14 @@ const MainContent = styled.div`
   }
 `;
 
-const DefaultLayout: React.FC = ({ children }) => {
+interface DefaultLayoutProps {
+  readonly isAdmin?: boolean;
+}
+
+const DefaultLayout: React.FC<DefaultLayoutProps> = ({ isAdmin, children }) => {
   return (
     <SideBarContainer>
-      <Sidebar />
+      <Sidebar isAdminPage={isAdmin} />
       <MainContent>
         <Background />
         {children}

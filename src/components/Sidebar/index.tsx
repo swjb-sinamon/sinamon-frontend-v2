@@ -6,7 +6,7 @@ import SidebarTitle from './SidebarTitle';
 import SidebarItem from './SidebarItem';
 import { Breakpoints, makeMediaQuery } from '../../styles/Breakpoint';
 import Api from '../../apis';
-import { PageList } from '../../stores/PageList';
+import { AdminPageList, PageList } from '../../stores/PageList';
 
 const StyledSidebar = styled.div`
   min-height: 100vh;
@@ -47,7 +47,11 @@ const BottomMenu = styled.p`
   margin-bottom: 1rem !important;
 `;
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+  readonly isAdminPage?: boolean;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ isAdminPage }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
 
   const onLogoutClick = () => {
@@ -60,12 +64,14 @@ const Sidebar: React.FC = () => {
     Api.delete('/auth/logout').then(() => window.location.reload());
   };
 
+  const Page = isAdminPage ? AdminPageList : PageList;
+
   return (
     <StyledSidebar>
       <SidebarTitle setOpen={setOpen} />
 
       <SidebarList open={isOpen}>
-        {PageList.map(
+        {Page.map(
           (page) =>
             !page.onlyRouter && (
               <SidebarLink to={page.path}>

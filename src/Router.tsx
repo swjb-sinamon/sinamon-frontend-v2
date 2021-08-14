@@ -1,12 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import MainPage from './pages/MainPage';
 import PermissionRoute from './utils/PermissionRoute';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import PrivacyPage from './pages/PrivacyPage';
 import ToSPage from './pages/ToSPage';
-import { PageList } from './stores/PageList';
+import { AdminPageList, PageList } from './stores/PageList';
 
 const RedirectLogin = (path: string) => <Redirect to={`/login?q=${path}`} />;
 
@@ -14,13 +13,21 @@ const Router: React.FC = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <PermissionRoute path="/" success={() => MainPage} failure={() => RedirectLogin('/')} exact />
-
         {PageList.map((page) => (
           <PermissionRoute
             path={page.path}
             success={() => page.component}
             failure={() => RedirectLogin(page.path)}
+            exact
+          />
+        ))}
+
+        {AdminPageList.map((page) => (
+          <PermissionRoute
+            path={page.path}
+            success={() => page.component}
+            failure={() => RedirectLogin(page.path)}
+            permissions={page.permissions}
             exact
           />
         ))}
