@@ -40,6 +40,12 @@ const SidebarLink = styled(Link)`
   text-decoration: none !important;
 `;
 
+const BottomMenu = styled.p`
+  color: var(--color-subtext);
+  text-align: center;
+  margin-bottom: 1rem !important;
+`;
+
 const Sidebar: React.FC = () => {
   const [isOpen, setOpen] = useState<boolean>(false);
 
@@ -70,6 +76,10 @@ const Sidebar: React.FC = () => {
         <SidebarItem icon={faSignOutAlt} tabIndex={0} onClick={onLogoutClick}>
           로그아웃
         </SidebarItem>
+
+        <BottomMenu>
+          <Link to="/privacy">개인정보처리방침</Link> / <Link to="/tos">이용약관</Link>
+        </BottomMenu>
       </SidebarList>
     </StyledSidebar>
   );
