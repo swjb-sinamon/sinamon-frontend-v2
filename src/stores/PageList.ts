@@ -62,6 +62,7 @@ export const AdminPageList: PageListType[] = [
     name: '어드민 메인',
     path: '/admin',
     component: AdminMainPage,
-    onlyRouter: true
+    onlyRouter: true,
+    permissions: ['admin', 'teacher', 'schoolunion']
   }
 ];

@@ -6,6 +6,7 @@ import RegisterPage from './pages/RegisterPage';
 import PrivacyPage from './pages/PrivacyPage';
 import ToSPage from './pages/ToSPage';
 import { AdminPageList, PageList } from './stores/PageList';
+import UnauthorizedPage from './pages/error/UnauthorizedPage';
 
 const RedirectLogin = (path: string) => <Redirect to={`/login?q=${path}`} />;
 
@@ -26,7 +27,7 @@ const Router: React.FC = () => {
           <PermissionRoute
             path={page.path}
             success={() => page.component}
-            failure={() => RedirectLogin(page.path)}
+            failure={() => UnauthorizedPage({ prevPath: page.path })}
             permissions={page.permissions}
             exact
           />
