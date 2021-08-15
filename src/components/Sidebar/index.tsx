@@ -86,6 +86,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isAdminPage }) => {
 
         <BottomMenu>
           <Link to="/privacy">개인정보처리방침</Link> / <Link to="/tos">이용약관</Link>
+          <br />
+          <Link to="/admin">어드민</Link>
         </BottomMenu>
       </SidebarList>
     </StyledSidebar>
