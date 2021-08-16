@@ -21,12 +21,16 @@ export const TableContainer: React.FC = ({ children }) => {
   );
 };
 
-export const TableHeader = styled.tr`
+export const TableHeader = styled.thead``;
+
+export const TableBody = styled.tbody``;
+
+export const TableHeaderRow = styled.tr`
   text-align: left;
   background-color: var(--color-gray);
 `;
 
-export const TableBody = styled.tr`
+export const TableBodyRow = styled.tr`
   background-color: white;
 
   border-bottom: 1px solid var(--color-gray);

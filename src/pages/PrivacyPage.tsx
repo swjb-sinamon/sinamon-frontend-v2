@@ -7,7 +7,15 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Breakpoints, makeMediaQuery } from '../styles/Breakpoint';
 import { Heading1, Heading2 } from '../atoms/Typography/Heading';
 import { Gap } from '../utils/Gap';
-import { TableBody, TableBodyItem, TableContainer, TableHeader, TableHeaderItem } from '../atoms/Table';
+import {
+  TableBodyRow,
+  TableBodyItem,
+  TableContainer,
+  TableHeaderRow,
+  TableHeaderItem,
+  TableHeader,
+  TableBody
+} from '../atoms/Table';
 import { Button } from '../atoms/Button';
 
 const Title = styled.h1`
@@ -175,14 +183,18 @@ const PrivacyPage: React.FC = () => {
 
           <TableContainer>
             <TableHeader>
-              <TableHeaderItem>수탁업체</TableHeaderItem>
-              <TableHeaderItem>수탁업무 내용</TableHeaderItem>
-              <TableHeaderItem>개인정보의 보유 및 이용기간</TableHeaderItem>
+              <TableHeaderRow>
+                <TableHeaderItem>수탁업체</TableHeaderItem>
+                <TableHeaderItem>수탁업무 내용</TableHeaderItem>
+                <TableHeaderItem>개인정보의 보유 및 이용기간</TableHeaderItem>
+              </TableHeaderRow>
             </TableHeader>
             <TableBody>
-              <TableBodyItem>네이버클라우드</TableBodyItem>
-              <TableBodyItem>개인정보가 저장된 서버 운영 및 관리</TableBodyItem>
-              <TableBodyItem>회원탈퇴 시 또는 위탁계약 종료 시</TableBodyItem>
+              <TableBodyRow>
+                <TableBodyItem>네이버클라우드</TableBodyItem>
+                <TableBodyItem>개인정보가 저장된 서버 운영 및 관리</TableBodyItem>
+                <TableBodyItem>회원탈퇴 시 또는 위탁계약 종료 시</TableBodyItem>
+              </TableBodyRow>
             </TableBody>
           </TableContainer>
         </div>
