@@ -1,4 +1,11 @@
-import { faCalendarWeek, faSchool, faStickyNote, faUtensils } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBullhorn,
+  faCalendarWeek,
+  faCog,
+  faSchool,
+  faStickyNote,
+  faUtensils
+} from '@fortawesome/free-solid-svg-icons';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import React from 'react';
 import MealPage from '../pages/MealPage';
@@ -6,6 +13,9 @@ import TimetablePage from '../pages/TimetablePage';
 import CalendarPage from '../pages/CalendarPage';
 import AnonymousPage from '../pages/AnonymousPage';
 import MyPage from '../pages/MyPage';
+import MainPage from '../pages/MainPage';
+import AdminMainPage from '../pages/admin/AdminMainPage';
+import AdminNoticePage from '../pages/admin/AdminNoticePage';
 
 interface PageListType {
   readonly name: string;
@@ -13,9 +23,16 @@ interface PageListType {
   readonly icon?: IconDefinition;
   readonly component: React.FC;
   readonly onlyRouter?: boolean;
+  readonly permissions?: Array<'admin' | 'teacher' | 'schoolunion'>;
 }
 
 export const PageList: PageListType[] = [
+  {
+    name: '메인',
+    path: '/',
+    component: MainPage,
+    onlyRouter: true
+  },
   {
     name: '급식',
     path: '/meal',
@@ -45,5 +62,22 @@ export const PageList: PageListType[] = [
     path: '/me',
     component: MyPage,
     onlyRouter: true
+  }
+];
+
+export const AdminPageList: PageListType[] = [
+  {
+    name: '어드민 메인',
+    path: '/admin',
+    component: AdminMainPage,
+    icon: faCog,
+    permissions: ['admin', 'teacher', 'schoolunion']
+  },
+  {
+    name: '공지사항 관리',
+    path: '/admin/notice',
+    component: AdminNoticePage,
+    icon: faBullhorn,
+    permissions: ['admin', 'teacher']
   }
 ];

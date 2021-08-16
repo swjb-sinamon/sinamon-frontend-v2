@@ -1,4 +1,9 @@
 import React from 'react';
+import styled from '@emotion/styled';
+
+const StyledEmoji = styled.span`
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+`;
 
 interface EmojiProps {
   readonly label: string;
@@ -7,9 +12,9 @@ interface EmojiProps {
 
 const Emoji: React.FC<EmojiProps> = ({ label, symbol }) => {
   return (
-    <span role="img" aria-label={label}>
+    <StyledEmoji role="img" aria-label={label}>
       {symbol}
-    </span>
+    </StyledEmoji>
   );
 };
 export default Emoji;
