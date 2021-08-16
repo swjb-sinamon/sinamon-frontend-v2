@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { Dispatch, SetStateAction, useMemo, useState } from 'react';
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
@@ -35,12 +35,13 @@ interface PaginationProps {
   readonly onPageChange: (page: number) => void;
   readonly dataCount: number;
   readonly pageLimit: number;
+  readonly page: number;
+  readonly setPage: Dispatch<SetStateAction<number>>;
 }
 
 const PAGE_PER_GROUP = 10; // 한 그룹당 표시되는 페이지 개수
 
-const Pagination: React.FC<PaginationProps> = ({ onPageChange, dataCount, pageLimit }) => {
-  const [page, setPage] = useState<number>(1);
+const Pagination: React.FC<PaginationProps> = ({ onPageChange, dataCount, pageLimit, page, setPage }) => {
   const [pageGroup, setPageGroup] = useState<number>(1);
 
   const pageCount = useMemo(() => Math.ceil(dataCount / pageLimit), [dataCount, pageLimit]); // 페이지 개수
