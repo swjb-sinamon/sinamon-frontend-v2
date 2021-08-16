@@ -37,12 +37,13 @@ export const TableBody = styled.tr`
 `;
 
 export const TableHeaderItem = styled.th`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
 
   padding: 0.8rem 1.2rem;
 `;
 
 export const TableBodyItem = styled.td`
+  font-size: 14px;
   padding: 0.8rem 1.2rem;
 `;
