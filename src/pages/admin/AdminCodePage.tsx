@@ -11,6 +11,7 @@ import { Gap } from '../../utils/Gap';
 import Pagination from '../../components/Pagination';
 import CodeTable from '../../components/Code/CodeTable';
 import { Button } from '../../atoms/Button';
+import { downloadFile } from '../../utils/FileDownload';
 
 const HeaderButton = styled.div`
   & > button {
@@ -45,6 +46,13 @@ const AdminCodePage: React.FC = () => {
     });
   };
 
+  const onCsvDownloadClick = () => {
+    Api.get('/code/csv').then((res) => {
+      const date = new Date().toLocaleDateString().replace(/ /g, '');
+      downloadFile(res.data.data, `${date}-code.csv`);
+    });
+  };
+
   return (
     <>
       <Helmet>
@@ -60,7 +68,7 @@ const AdminCodePage: React.FC = () => {
 
         <HeaderButton>
           <Button onClick={onAddClick}>인증코드 추가</Button>
-          <Button>CSV 다운로드</Button>
+          <Button onClick={onCsvDownloadClick}>CSV 다운로드</Button>
         </HeaderButton>
 
         <Gap gap={16} />
