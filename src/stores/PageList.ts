@@ -2,6 +2,7 @@ import {
   faBullhorn,
   faCalendarWeek,
   faCog,
+  faKey,
   faSchool,
   faStickyNote,
   faUtensils
@@ -16,6 +17,7 @@ import MyPage from '../pages/MyPage';
 import MainPage from '../pages/MainPage';
 import AdminMainPage from '../pages/admin/AdminMainPage';
 import AdminNoticePage from '../pages/admin/AdminNoticePage';
+import AdminCodePage from '../pages/admin/AdminCodePage';
 
 interface PageListType {
   readonly name: string;
@@ -78,6 +80,13 @@ export const AdminPageList: PageListType[] = [
     path: '/admin/notice',
     component: AdminNoticePage,
     icon: faBullhorn,
+    permissions: ['admin', 'teacher']
+  },
+  {
+    name: '인증코드 관리',
+    path: '/admin/code',
+    component: AdminCodePage,
+    icon: faKey,
     permissions: ['admin', 'teacher']
   }
 ];

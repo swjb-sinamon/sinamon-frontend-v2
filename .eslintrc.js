@@ -6,6 +6,8 @@ module.exports = {
     'jsx-quotes': 'off',
     'comma-dangle': 'off',
     'object-curly-newline': 'off',
+    'no-plusplus': 'off',
+    'no-console': 'off',
 
     'react/jsx-filename-extension': 'off',
     'react/no-unescaped-entities': 'off',
@@ -18,8 +20,6 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/no-extraneous-dependencies': 'off',
     'import/prefer-default-export': 'off',
-
-    'no-console': 'off',
 
     'linebreak-style': 'off',
 

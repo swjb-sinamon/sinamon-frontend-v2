@@ -21,12 +21,16 @@ export const TableContainer: React.FC = ({ children }) => {
   );
 };
 
-export const TableHeader = styled.tr`
+export const TableHeader = styled.thead``;
+
+export const TableBody = styled.tbody``;
+
+export const TableHeaderRow = styled.tr`
   text-align: left;
   background-color: var(--color-gray);
 `;
 
-export const TableBody = styled.tr`
+export const TableBodyRow = styled.tr`
   background-color: white;
 
   border-bottom: 1px solid var(--color-gray);
@@ -37,12 +41,13 @@ export const TableBody = styled.tr`
 `;
 
 export const TableHeaderItem = styled.th`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
 
   padding: 0.8rem 1.2rem;
 `;
 
 export const TableBodyItem = styled.td`
+  font-size: 14px;
   padding: 0.8rem 1.2rem;
 `;
