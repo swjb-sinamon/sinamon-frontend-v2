@@ -74,7 +74,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isAdminPage }) => {
         {Page.map(
           (page) =>
             !page.onlyRouter && (
-              <SidebarLink to={page.path}>
+              <SidebarLink to={page.path} key={`sidebar${page.name}`}>
                 <SidebarItem icon={page.icon || faSchool}>{page.name}</SidebarItem>
               </SidebarLink>
             )

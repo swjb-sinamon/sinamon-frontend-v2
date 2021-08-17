@@ -16,6 +16,7 @@ const Router: React.FC = () => {
       <Switch>
         {PageList.map((page) => (
           <PermissionRoute
+            key={`router${page.name}`}
             path={page.path}
             success={() => page.component}
             failure={() => RedirectLogin(page.path)}
@@ -25,6 +26,7 @@ const Router: React.FC = () => {
 
         {AdminPageList.map((page) => (
           <PermissionRoute
+            key={`admin${page.name}`}
             path={page.path}
             success={() => page.component}
             failure={() => UnauthorizedPage({ prevPath: page.path })}
