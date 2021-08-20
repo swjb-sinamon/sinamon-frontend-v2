@@ -5,7 +5,8 @@ import {
   faKey,
   faSchool,
   faStickyNote,
-  faUtensils
+  faUtensils,
+  faUsers
 } from '@fortawesome/free-solid-svg-icons';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import React from 'react';
@@ -18,6 +19,7 @@ import MainPage from '../pages/MainPage';
 import AdminMainPage from '../pages/admin/AdminMainPage';
 import AdminNoticePage from '../pages/admin/AdminNoticePage';
 import AdminCodePage from '../pages/admin/AdminCodePage';
+import AdminUserPge from '../pages/admin/AdminUserPage';
 
 interface PageListType {
   readonly name: string;
@@ -87,6 +89,13 @@ export const AdminPageList: PageListType[] = [
     path: '/admin/code',
     component: AdminCodePage,
     icon: faKey,
+    permissions: ['admin', 'teacher']
+  },
+  {
+    name: '유저 관리',
+    path: '/admin/user',
+    component: AdminUserPge,
+    icon: faUsers,
     permissions: ['admin', 'teacher']
   }
 ];
