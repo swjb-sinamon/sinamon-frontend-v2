@@ -19,7 +19,7 @@ import MainPage from '../pages/MainPage';
 import AdminMainPage from '../pages/admin/AdminMainPage';
 import AdminNoticePage from '../pages/admin/AdminNoticePage';
 import AdminCodePage from '../pages/admin/AdminCodePage';
-import AdminUserPge from '../pages/admin/AdminUserPage';
+import AdminUserPage from '../pages/admin/AdminUserPage';
 
 interface PageListType {
   readonly name: string;
@@ -94,7 +94,7 @@ export const AdminPageList: PageListType[] = [
   {
     name: '유저 관리',
     path: '/admin/user',
-    component: AdminUserPge,
+    component: AdminUserPage,
     icon: faUsers,
     permissions: ['admin', 'teacher']
   }

@@ -15,16 +15,16 @@ interface ProfileTypeProps {
 }
 
 const UserTable: React.FC<ProfileTypeProps> = ({ data }) => {
-  return(
+  return (
     <TableContainer>
       <TableHeader>
         <TableHeaderRow>
-        <TableHeaderItem>아이디</TableHeaderItem>
-        <TableHeaderItem>이름</TableHeaderItem>
-        <TableHeaderItem>학년</TableHeaderItem>
-        <TableHeaderItem>반</TableHeaderItem>
-        <TableHeaderItem>번호</TableHeaderItem>
-        <TableHeaderItem>가입일</TableHeaderItem>
+          <TableHeaderItem>아이디</TableHeaderItem>
+          <TableHeaderItem>이름</TableHeaderItem>
+          <TableHeaderItem>학년</TableHeaderItem>
+          <TableHeaderItem>반</TableHeaderItem>
+          <TableHeaderItem>번호</TableHeaderItem>
+          <TableHeaderItem>가입일</TableHeaderItem>
         </TableHeaderRow>
       </TableHeader>
       <TableBody>
@@ -40,7 +40,7 @@ const UserTable: React.FC<ProfileTypeProps> = ({ data }) => {
         ))}
       </TableBody>
     </TableContainer>
-  )
+  );
 };
 
 export default UserTable;

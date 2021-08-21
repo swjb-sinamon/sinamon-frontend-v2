@@ -63,7 +63,7 @@ const SelectContainer = styled.div`
   }
 `;
 
-const UserPage: React.FC = () => {
+const AdminUserPage: React.FC = () => {
   const [data, setData] = useState<ProfileType[]>([]);
 
   const [page, setPage] = useState<number>(1);
@@ -161,4 +161,4 @@ const UserPage: React.FC = () => {
   );
 };
 
-export default UserPage;
+export default AdminUserPage;
