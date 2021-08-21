@@ -15,6 +15,13 @@ import Emoji from '../../atoms/Emoji';
 
 import  UserTable from '../../components/User/UserTable';
 
+// const ControlSection = styled.div`
+//   display: flex;
+
+//   input{ margin-right: 8px; }
+//   label{ margin-left: 12rem; }
+// `;
+
 const UserPage: React.FC = () => {
   const [data, setData] = useState< ProfileType[]>([]);
   
@@ -22,25 +29,28 @@ const UserPage: React.FC = () => {
   const [count, setCount] = useState<number>(0);
 
   const [grade, setGrade] = useState<string>('');
-  const [Class, setClass] = useState<string>('');
+  const [clazz, setclazz] = useState<string>('');
 
   const [search, setSearch] = useState<string>('');
 
   const fetchData = useCallback( // p is for page (query)
     (p: number, searchValue: string)=>{
       const gradeQuery = grade ? `&filters[grade]=${grade}` : '';
-      const classQuery = Class ? `&filters[Class]=${Class}` : '';
-
+      const clazzQuery = clazz ? `&filters[class]=${clazz}` : '';
+      console.log(`${grade  }-${  clazz}`)
       Api.get(
-          `/auth/user?limit=30&offset=${p}&search=${searchValue}${gradeQuery}${classQuery}`
+          `/auth/user?limit=30&offset=${p}&search=${searchValue}${gradeQuery}${clazzQuery}`
         ).then((res) => {
           setData(res.data.data);
           setCount(res.data.count);
+          console.log(res.data.data)
         });
-      }, [Class ,grade]);
+      }, [clazz ,grade]);
      
 
-  useEffect(() => { fetchData(1, '');}, [fetchData]);
+  useEffect(() => { 
+    fetchData(1, '');
+  }, [fetchData]);
 
   return (
     <>
@@ -55,6 +65,7 @@ const UserPage: React.FC = () => {
 
         <Gap gap={32} />
 
+       
         <Input
           type="text"
           placeholder="사용자 이름 검색(엔터)"
@@ -63,20 +74,7 @@ const UserPage: React.FC = () => {
           }}
           onChange={(e) => setSearch(e.target.value)}
               value={search}
-          />
-
-          <Select
-            onChange={(e) => {
-              setClass(e.target.value);
-              setSearch('');
-            }}
-            value={Class}
-          >
-            <option value="">학년 전체</option>
-            <option value="1">1학년</option>
-            <option value="2">2학년</option>
-            <option value="3">3학년</option>
-          </Select>
+          />        
 
           <Select
             onChange={(e) => {
@@ -85,16 +83,37 @@ const UserPage: React.FC = () => {
             }}
             value={grade}
           >
+            <option value="">학년 전체</option>
+            <option value="1">1학년</option>
+            <option value="2">2학년</option>
+            <option value="3">3학년</option>
+          </Select>
+            
+
+          <Select
+            onChange={(e) => {
+              setclazz(e.target.value);
+              setSearch('');
+            }}
+            value={clazz}
+          >
             <option value="">반 전체</option>
             <option value="1">1반</option>
             <option value="2">2반</option>
           </Select>
-              
+          
           <Label>전체: {count}명</Label>
+
+       
+
+
+          <Gap gap={16} />
 
           <UserTable
             data={data} 
           />
+
+          <Gap gap={16} />
 
           <Pagination onPageChange={(pageOffset) => fetchData(pageOffset, search)} dataCount={count} pageLimit={10} page={page} setPage={setPage} />
 
