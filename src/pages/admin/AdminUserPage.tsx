@@ -17,15 +17,10 @@ import UserTable from '../../components/User/UserTable';
 import Pagination from '../../components/Pagination';
 import DefaultLayout from '../../layouts/DefaultLayout';
 
-const UserContainer = styled.div`
-  width: 100%;
-  
-`;
-
 const ControlContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  
+
   input {
     width: 23rem;
     margin-top: 10px;
@@ -103,66 +98,64 @@ const UserPage: React.FC = () => {
       </Helmet>
 
       <DefaultLayout isAdmin>
-        <UserContainer>
-          <Heading2>
-            <Emoji label="people" symbol="🧑‍🤝‍🧑" /> 유저 관리
-          </Heading2>
+        <Heading2>
+          <Emoji label="people" symbol="🧑‍🤝‍🧑" /> 유저 관리
+        </Heading2>
 
-          <Gap gap={32} />
+        <Gap gap={32} />
 
-          <ControlContainer>
-            <Input
-              type="text"
-              placeholder="유저 이름 검색(엔터)"
-              onKeyPress={(e) => {
-                if (e.key === 'Enter') fetchData(1, search);
-              }}
-              onChange={(e) => setSearch(e.target.value)}
-              value={search}
-            />
-
-            <SelectContainer>
-              <Select
-                onChange={(e) => {
-                  setGrade(e.target.value);
-                  setSearch('');
-                }}
-                value={grade}
-              >
-                <option value="">학년 전체</option>
-                <option value="1">1학년</option>
-                <option value="2">2학년</option>
-                <option value="3">3학년</option>
-              </Select>
-
-              <Select
-                onChange={(e) => {
-                  setclazz(e.target.value);
-                  setSearch('');
-                }}
-                value={clazz}
-              >
-                <option value="">반 전체</option>
-                <option value="1">1반</option>
-                <option value="2">2반</option>
-              </Select>
-            </SelectContainer>
-          </ControlContainer>
-
-          <Gap gap={16} />
-
-          <UserTable data={data} />
-
-          <Gap gap={16} />
-          <Label>전체: {count}명</Label>
-          <Pagination
-            onPageChange={(pageOffset) => fetchData(pageOffset, search)}
-            dataCount={count}
-            pageLimit={10}
-            page={page}
-            setPage={setPage}
+        <ControlContainer>
+          <Input
+            type="text"
+            placeholder="유저 이름 검색(엔터)"
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') fetchData(1, search);
+            }}
+            onChange={(e) => setSearch(e.target.value)}
+            value={search}
           />
-        </UserContainer>
+
+          <SelectContainer>
+            <Select
+              onChange={(e) => {
+                setGrade(e.target.value);
+                setSearch('');
+              }}
+              value={grade}
+            >
+              <option value="">학년 전체</option>
+              <option value="1">1학년</option>
+              <option value="2">2학년</option>
+              <option value="3">3학년</option>
+            </Select>
+
+            <Select
+              onChange={(e) => {
+                setclazz(e.target.value);
+                setSearch('');
+              }}
+              value={clazz}
+            >
+              <option value="">반 전체</option>
+              <option value="1">1반</option>
+              <option value="2">2반</option>
+            </Select>
+          </SelectContainer>
+        </ControlContainer>
+
+        <Gap gap={16} />
+
+        <UserTable data={data} />
+
+        <Gap gap={16} />
+        <Label>전체: {count}명</Label>
+        <Pagination
+          onPageChange={(pageOffset) => fetchData(pageOffset, search)}
+          dataCount={count}
+          pageLimit={10}
+          page={page}
+          setPage={setPage}
+        />
       </DefaultLayout>
     </>
   );
