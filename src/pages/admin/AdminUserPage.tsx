@@ -5,7 +5,6 @@ import { Helmet } from 'react-helmet-async';
 import { ProfileType } from '../../types/ApiResponse';
 
 import { Gap } from '../../utils/Gap';
-import { Label } from '../../atoms/Form/Label';
 import { Input } from '../../atoms/Form/Input';
 import { Select } from '../../atoms/Form/Select';
 import { Heading2 } from '../../atoms/Typography/Heading';
@@ -19,7 +18,6 @@ import DefaultLayout from '../../layouts/DefaultLayout';
 
 const ControlContainer = styled.div`
   display: flex;
-  justify-content: space-between;
 
   input {
     width: 23rem;
@@ -64,10 +62,8 @@ const SelectContainer = styled.div`
 `;
 
 const AdminUserPage: React.FC = () => {
-  const [data, setData] = useState<ProfileType[]>([]);
-
+  const [data, setData] = useState<{ data: ProfileType[]; count: number }>({ data: [], count: 0 });
   const [page, setPage] = useState<number>(1);
-  const [count, setCount] = useState<number>(0);
 
   const [grade, setGrade] = useState<string>('');
   const [clazz, setclazz] = useState<string>('');
@@ -79,9 +75,11 @@ const AdminUserPage: React.FC = () => {
       const gradeQuery = grade ? `&filters[grade]=${grade}` : '';
       const clazzQuery = clazz ? `&filters[class]=${clazz}` : '';
 
-      Api.get(`/auth/user?limit=30&offset=${p}&search=${searchValue}${gradeQuery}${clazzQuery}`).then((res) => {
-        setData(res.data.data);
-        setCount(res.data.count);
+      Api.get(`/auth/user?limit=10&offset=${p}&search=${searchValue}${gradeQuery}${clazzQuery}`).then((res) => {
+        setData({
+          data: res.data.data,
+          count: res.data.count
+        });
       });
     },
     [clazz, grade]
@@ -145,13 +143,13 @@ const AdminUserPage: React.FC = () => {
 
         <Gap gap={16} />
 
-        <UserTable data={data} />
+        <UserTable data={data.data} />
 
         <Gap gap={16} />
-        <Label>전체: {count}명</Label>
+
         <Pagination
           onPageChange={(pageOffset) => fetchData(pageOffset, search)}
-          dataCount={count}
+          dataCount={data.count}
           pageLimit={10}
           page={page}
           setPage={setPage}
