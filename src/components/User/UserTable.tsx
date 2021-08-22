@@ -10,11 +10,11 @@ import {
 } from '../../atoms/Table';
 import { ProfileType } from '../../types/ApiResponse';
 
-interface ProfileTypeProps {
+interface UserTableProps {
   readonly data: ProfileType[];
 }
 
-const UserTable: React.FC<ProfileTypeProps> = ({ data }) => {
+const UserTable: React.FC<UserTableProps> = ({ data }) => {
   return (
     <TableContainer>
       <TableHeader>
