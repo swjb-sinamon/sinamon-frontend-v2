@@ -2,7 +2,7 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { ErrorMessage } from './ApiErrorMessage';
 
-const host = process.env.REACT_APP_API_HOST || 'http://localhost:8080/v1';
+const host = process.env.REACT_APP_API_HOST || 'http://localhost:8080/v2';
 
 const Api = axios.create({
   baseURL: host,
