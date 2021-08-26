@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { Helmet } from 'react-helmet-async';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Gap } from '../utils/Gap';
+import { Helmet } from 'react-helmet-async';
 import { Heading2, RoundHeading2 } from '../atoms/Typography/Heading';
+import { Gap } from '../utils/Gap';
 import AnonymousListCard from '../components/AnonymousListCard';
 import { Input } from '../atoms/Form/Input';
 import { Button } from '../atoms/Button';
@@ -14,33 +14,31 @@ import DefaultLayout from '../layouts/DefaultLayout';
 import { Textarea } from '../atoms/Form/Textarea';
 import Emoji from '../atoms/Emoji';
 
-
-export interface Anonymous {
+interface Anonymous {
   readonly title: string;
-  readonly contents: string;
+  readonly content: string;
 }
 
 const AnonymousPage: React.FC = () => {
   const [apiWritten, setApiWritten] = useState<ApiAnonymous[]>([]);
   const {
     register,
-    formState: {errors},
-    handleSubmit,
+    formState: { errors },
+    handleSubmit
   } = useForm<Anonymous>();
 
-  const onWrittenClick : SubmitHandler<Anonymous> = async (data) => {
-    const {title, contents} = data;
-    if (title.trim() === '' || contents.trim() === '') {
+  const onWrittenClick: SubmitHandler<Anonymous> = async (data) => {
+    const { title, content } = data;
+    if (title.trim() === '' || content.trim() === '') {
       toast.error('제목 또는 내용이 빈칸입니다');
       return;
     }
-      await Api.post('/anonymous', {
-        title,
-        contents
-      });
-      toast.success('제출완료!');
-      window.location.reload();
-    
+    await Api.post('/anonymous', {
+      title,
+      content
+    });
+    toast.success('제출완료!');
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -63,26 +61,15 @@ const AnonymousPage: React.FC = () => {
         <Gap gap={32} />
 
         <RoundHeading2>제목을 적어주세요</RoundHeading2>
-        <Input
-          placeholder="제목"
-          title="title"
-          type="text"
-          autoFocus {...register('title', { required: true})}
-          width={385}
-        />
+        <Input placeholder="제목" type="text" autoFocus {...register('title', { required: true })} width={385} />
         <InputError formError={errors.title} type="required">
           제목이 빈칸입니다.
         </InputError>
         <Gap gap={10} />
 
         <RoundHeading2>내용을 입력해주세요</RoundHeading2>
-        <Textarea
-          placeholder="내용"
-          {...register('contents', { required: true })}
-          cols={50}
-          rows={15}
-        />
-        <InputError formError={errors.contents} type="required">
+        <Textarea placeholder="내용" {...register('content', { required: true })} cols={50} rows={15} />
+        <InputError formError={errors.content} type="required">
           내용이 빈칸입니다.
         </InputError>
         <Gap gap={30} />
