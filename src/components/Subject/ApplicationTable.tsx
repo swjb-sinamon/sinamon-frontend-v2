@@ -9,6 +9,7 @@ import {
   TableHeaderRow
 } from '../../atoms/Table';
 import { ApplicationType } from '../../types/ApiResponse';
+import { WhiteSquareButton } from '../../atoms/Button';
 
 interface ApplicationTableProps {
   readonly data: ApplicationType[];
@@ -36,6 +37,7 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({ data }) => {
           <TableHeaderItem>지망순위</TableHeaderItem>
           <TableHeaderItem>상태</TableHeaderItem>
           <TableHeaderItem>신청일</TableHeaderItem>
+          <TableHeaderItem>신청 취소</TableHeaderItem>
         </TableHeaderRow>
       </TableHeader>
       <TableBody>
@@ -45,6 +47,9 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({ data }) => {
             <TableBodyItem>{item.priority || '선착순 지원'}</TableBodyItem>
             <TableBodyItem>{convertStatus(item.status)}</TableBodyItem>
             <TableBodyItem>{new Date(item.createdAt).toLocaleDateString()}</TableBodyItem>
+            <TableBodyItem>
+              <WhiteSquareButton>취소</WhiteSquareButton>
+            </TableBodyItem>
           </TableBodyRow>
         ))}
       </TableBody>
