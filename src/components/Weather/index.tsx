@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { useWeather } from '../../hooks/useWeather';
-import { convertPm10ToString, convertPm25ToString } from '../../utils/Dust';
 import WeatherIcon from '../../atoms/Icon/WeatherIcon';
 import { Breakpoints, makeMediaQuery } from '../../styles/Breakpoint';
 
@@ -10,7 +9,7 @@ const WeatherContent = styled.div<{ background: string }>`
 
   border-radius: 30px;
 
-  padding: 46px 40px 30px;
+  padding: 35px;
 
   ${makeMediaQuery(Breakpoints.MD)} {
     padding: 36px 40px 30px;
@@ -19,13 +18,13 @@ const WeatherContent = styled.div<{ background: string }>`
 `;
 
 const WeatherContentTop = styled.div`
+  width: 100%;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  padding: 0 30px 26px;
-
-  border-bottom: 2px solid #fff;
+  padding: 0 20px 26px;
 
   ${makeMediaQuery(Breakpoints.MD)} {
     padding: 0 12px 26px;
@@ -36,10 +35,12 @@ const WeatherContentStatus = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+
+  padding-left: 40px;
 `;
 
 const StyledWeatherTemp = styled.div`
-  font-size: 3.4rem;
+  font-size: 4rem;
   color: #fff;
 
   font-weight: 700;
@@ -58,20 +59,6 @@ const StyledWeatherStatus = styled.div`
   }
 `;
 
-const DustContentBottom = styled.div`
-  display: flex;
-  justify-content: space-around;
-
-  padding: 12px 16px;
-`;
-
-const StyledDustStatus = styled.p`
-  color: #fff;
-`;
-
-const StyledDustHighlight = styled.span`
-  font-weight: bold;
-`;
 
 const background: Record<string, string> = {
   CLEAR: 'linear-gradient(to top, #dbe4e6, #1c92d2)',
@@ -92,10 +79,7 @@ const status: Record<string, string> = {
 };
 
 const WeatherCard: React.FC = () => {
-  const { weather, dust } = useWeather();
-
-  const [pm10Text] = convertPm10ToString(dust.pm10);
-  const [pm25Text] = convertPm25ToString(dust.pm25);
+  const { weather } = useWeather();
 
   return (
     <WeatherContent background={background.CLOUDS}>
@@ -103,18 +87,10 @@ const WeatherCard: React.FC = () => {
         <WeatherIcon weather={weather.status} />
         <WeatherContentStatus>
           <StyledWeatherTemp>{weather.temp}℃</StyledWeatherTemp>
-          <StyledWeatherStatus>{status[weather.status]}</StyledWeatherStatus>
+          <StyledWeatherStatus>{status[weather.status]}맑음</StyledWeatherStatus>
         </WeatherContentStatus>
       </WeatherContentTop>
 
-      <DustContentBottom>
-        <StyledDustStatus>
-          미세먼지 <StyledDustHighlight>{pm10Text}</StyledDustHighlight>
-        </StyledDustStatus>
-        <StyledDustStatus>
-          초미세먼지 <StyledDustHighlight>{pm25Text}</StyledDustHighlight>
-        </StyledDustStatus>
-      </DustContentBottom>
     </WeatherContent>
   );
 };
