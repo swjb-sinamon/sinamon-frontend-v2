@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { Helmet } from 'react-helmet-async';
-import { Gap } from '../utils/Gap';
 import { Heading2, RoundHeading2 } from '../atoms/Typography/Heading';
+import { Gap } from '../utils/Gap';
 import AnonymousListCard from '../components/AnonymousListCard';
 import { Input } from '../atoms/Form/Input';
 import { Button } from '../atoms/Button';
+import InputError from '../components/Form/InputError';
 import Api from '../apis';
 import { ApiAnonymous } from '../types/ApiResponse';
 import DefaultLayout from '../layouts/DefaultLayout';
@@ -14,46 +16,27 @@ import Emoji from '../atoms/Emoji';
 
 interface Anonymous {
   readonly title: string;
-  readonly contents: string;
+  readonly content: string;
 }
 
 const AnonymousPage: React.FC = () => {
   const [apiWritten, setApiWritten] = useState<ApiAnonymous[]>([]);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit
+  } = useForm<Anonymous>();
 
-  const [written, setWritten] = useState<Anonymous>({
-    title: '',
-    contents: ''
-  });
-
-  const onTitleChange = (e: React.ChangeEvent<HTMLInputElement>, type: keyof Anonymous) => {
-    e.persist();
-
-    setWritten((current) => ({
-      ...current,
-      [type]: e.target.value
-    }));
-  };
-
-  const onContentsChange = (e: React.ChangeEvent<HTMLTextAreaElement>, type: keyof Anonymous) => {
-    e.persist();
-
-    setWritten((current) => ({
-      ...current,
-      [type]: e.target.value
-    }));
-  };
-
-  const onWrittenClick = async () => {
-    if (written.title.trim() === '' || written.contents.trim() === '') {
+  const onWrittenClick: SubmitHandler<Anonymous> = async (data) => {
+    const { title, content } = data;
+    if (title.trim() === '' || content.trim() === '') {
       toast.error('제목 또는 내용이 빈칸입니다');
       return;
     }
-
     await Api.post('/anonymous', {
-      title: written.title,
-      content: written.contents
+      title,
+      content
     });
-
     toast.success('제출완료!');
     window.location.reload();
   };
@@ -78,25 +61,19 @@ const AnonymousPage: React.FC = () => {
         <Gap gap={32} />
 
         <RoundHeading2>제목을 적어주세요</RoundHeading2>
-        <Input
-          placeholder="제목"
-          title={written.title}
-          type="text"
-          onChange={(e) => onTitleChange(e, 'title')}
-          width={385}
-        />
+        <Input placeholder="제목" type="text" autoFocus {...register('title', { required: true })} width={385} />
+        <InputError formError={errors.title} type="required">
+          제목이 빈칸입니다.
+        </InputError>
         <Gap gap={10} />
 
         <RoundHeading2>내용을 입력해주세요</RoundHeading2>
-        <Textarea
-          placeholder="내용"
-          value={written.contents}
-          onChange={(e) => onContentsChange(e, 'contents')}
-          cols={50}
-          rows={15}
-        />
+        <Textarea placeholder="내용" {...register('content', { required: true })} cols={50} rows={15} />
+        <InputError formError={errors.content} type="required">
+          내용이 빈칸입니다.
+        </InputError>
         <Gap gap={30} />
-        <Button onClick={onWrittenClick}>제출하기</Button>
+        <Button onClick={handleSubmit(onWrittenClick)}>제출하기</Button>
         <Gap gap={30} />
         <RoundHeading2>익명리스트</RoundHeading2>
         {apiWritten.map((item) => {
