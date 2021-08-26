@@ -9,7 +9,7 @@ const WeatherContent = styled.div<{ background: string }>`
 
   border-radius: 30px;
 
-  padding: 35px;
+  padding: 36px;
 
   ${makeMediaQuery(Breakpoints.MD)} {
     padding: 36px 40px 30px;
@@ -87,7 +87,7 @@ const WeatherCard: React.FC = () => {
         <WeatherIcon weather={weather.status} />
         <WeatherContentStatus>
           <StyledWeatherTemp>{weather.temp}℃</StyledWeatherTemp>
-          <StyledWeatherStatus>{status[weather.status]}맑음</StyledWeatherStatus>
+          <StyledWeatherStatus>{status[weather.status]}</StyledWeatherStatus>
         </WeatherContentStatus>
       </WeatherContentTop>
 
