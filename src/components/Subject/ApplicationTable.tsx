@@ -48,7 +48,7 @@ const ApplicationTable: React.FC<ApplicationTableProps> = ({ data }) => {
             <TableBodyItem>{convertStatus(item.status)}</TableBodyItem>
             <TableBodyItem>{new Date(item.createdAt).toLocaleDateString()}</TableBodyItem>
             <TableBodyItem>
-              <WhiteSquareButton>취소</WhiteSquareButton>
+              <WhiteSquareButton disabled={item.status !== 'WAITING'}>취소</WhiteSquareButton>
             </TableBodyItem>
           </TableBodyRow>
         ))}

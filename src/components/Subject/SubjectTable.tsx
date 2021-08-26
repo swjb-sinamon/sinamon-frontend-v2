@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import {
   TableBody,
   TableBodyItem,
@@ -10,6 +11,10 @@ import {
 } from '../../atoms/Table';
 import { WhiteSquareButton } from '../../atoms/Button';
 import { SubjectType } from '../../types/ApiResponse';
+
+const StyledBodyRow = styled(TableBodyRow)<{ darken?: boolean }>`
+  ${(props) => (props.darken ? 'color: var(--color-subtext);' : '')}
+`;
 
 interface SubjectTableProps {
   readonly data: SubjectType[];
@@ -29,7 +34,7 @@ const SubjectTable: React.FC<SubjectTableProps> = ({ data }) => {
       </TableHeader>
       <TableBody>
         {data.map((item) => (
-          <TableBodyRow key={item.id}>
+          <StyledBodyRow key={item.id} darken={item.subjectData.currentPeople === item.subjectData.maxPeople}>
             <TableBodyItem>{item.name}</TableBodyItem>
             <TableBodyItem>{item.description}</TableBodyItem>
             <TableBodyItem>{item.type === 'MAJOR_SUBJECT' ? '전공코스' : '선택과목'}</TableBodyItem>
@@ -41,7 +46,7 @@ const SubjectTable: React.FC<SubjectTableProps> = ({ data }) => {
                 신청
               </WhiteSquareButton>
             </TableBodyItem>
-          </TableBodyRow>
+          </StyledBodyRow>
         ))}
       </TableBody>
     </TableContainer>
