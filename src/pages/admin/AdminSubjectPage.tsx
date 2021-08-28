@@ -96,7 +96,7 @@ const AdminSubjectPage: React.FC = () => {
           <Button onClick={onCsvDownloadClick}>CSV 다운로드</Button>
         </ButtonGroup>
 
-        <Gap gap={32} />
+        <Gap gap={16} />
 
         <AdminSubjectTable data={api.data} />
 
