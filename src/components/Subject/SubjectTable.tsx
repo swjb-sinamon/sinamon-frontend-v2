@@ -28,6 +28,7 @@ const SubjectTable: React.FC<SubjectTableProps> = ({ data }) => {
           <TableHeaderItem>이름</TableHeaderItem>
           <TableHeaderItem>설명</TableHeaderItem>
           <TableHeaderItem>종류</TableHeaderItem>
+          <TableHeaderItem>방법</TableHeaderItem>
           <TableHeaderItem>인원</TableHeaderItem>
           <TableHeaderItem>신청</TableHeaderItem>
         </TableHeaderRow>
@@ -38,6 +39,7 @@ const SubjectTable: React.FC<SubjectTableProps> = ({ data }) => {
             <TableBodyItem>{item.name}</TableBodyItem>
             <TableBodyItem>{item.description}</TableBodyItem>
             <TableBodyItem>{item.type === 'MAJOR_SUBJECT' ? '전공코스' : '선택과목'}</TableBodyItem>
+            <TableBodyItem>{item.subjectData.applicationType === 'ORDER' ? '선착순' : '무작위선정'}</TableBodyItem>
             <TableBodyItem>
               {item.subjectData.currentPeople} / {item.subjectData.maxPeople}
             </TableBodyItem>
