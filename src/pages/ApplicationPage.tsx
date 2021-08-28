@@ -45,9 +45,6 @@ const ApplicationPage: React.FC = () => {
           <Highlight>대기 중</Highlight>은 아직 신청 완료가 안된 상태, <Highlight>자동 취소</Highlight>는 다른 과목이
           신청 완료되어 취소된 과목을 뜻합니다.
         </p>
-        <p>
-          <Highlight>대기 중</Highlight>인 과목만 신청 취소가 가능합니다.
-        </p>
 
         <Gap gap={8} />
 
