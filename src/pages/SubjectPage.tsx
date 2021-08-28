@@ -38,7 +38,9 @@ const SubjectPage: React.FC = () => {
 
   const [api, setApi] = useState<{ data: SubjectType[]; count: number }>({ data: [], count: 0 });
   const [page, setPage] = useState<number>(1);
+
   const [open, setOpen] = useState<boolean>(false);
+  const [helpOpen, setHelpOpen] = useState<boolean>(false);
   const [modalData, setModalData] = useState<number>(0);
 
   const fetchData = (p: number) => {
@@ -98,7 +100,7 @@ const SubjectPage: React.FC = () => {
 
         <ButtonGroup>
           <Button onClick={() => history.push('/application')}>신청한 과목 보기</Button>
-          <Button>도움말</Button>
+          <Button onClick={() => setHelpOpen(true)}>도움말</Button>
         </ButtonGroup>
 
         <Gap gap={16} />
@@ -134,6 +136,10 @@ const SubjectPage: React.FC = () => {
             <Button onClick={() => onApplicationClick(modalData, 3)}>3지망으로 지원</Button>
           </ButtonGroup>
         </ModalContent>
+      </Modal>
+
+      <Modal name="subjectHelp" open={helpOpen} setOpen={setHelpOpen} title="도움말">
+        도움말
       </Modal>
     </>
   );
