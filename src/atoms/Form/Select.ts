@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Select = styled.select<{ width?: number; height?: number }>`
-  width: ${(props) => props.width || '280'}px;
+  width: ${(props) => props.width || '300'}px;
   height: ${(props) => props.height || '40'}px;
 
   background-color: white;
