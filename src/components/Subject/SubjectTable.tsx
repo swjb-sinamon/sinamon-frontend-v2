@@ -18,9 +18,10 @@ const StyledBodyRow = styled(TableBodyRow)<{ darken?: boolean }>`
 
 interface SubjectTableProps {
   readonly data: SubjectType[];
+  readonly onButtonClick?: (subject: SubjectType) => void;
 }
 
-const SubjectTable: React.FC<SubjectTableProps> = ({ data }) => {
+const SubjectTable: React.FC<SubjectTableProps> = ({ data, onButtonClick }) => {
   return (
     <TableContainer>
       <TableHeader>
@@ -39,12 +40,15 @@ const SubjectTable: React.FC<SubjectTableProps> = ({ data }) => {
             <TableBodyItem>{item.name}</TableBodyItem>
             <TableBodyItem>{item.description}</TableBodyItem>
             <TableBodyItem>{item.type === 'MAJOR_SUBJECT' ? '전공코스' : '선택과목'}</TableBodyItem>
-            <TableBodyItem>{item.subjectData.applicationType === 'ORDER' ? '선착순' : '무작위선정'}</TableBodyItem>
+            <TableBodyItem>{item.subjectData.applicationType === 'ORDER' ? '선착순' : '무작위추첨'}</TableBodyItem>
             <TableBodyItem>
               {item.subjectData.currentPeople} / {item.subjectData.maxPeople}
             </TableBodyItem>
             <TableBodyItem>
-              <WhiteSquareButton disabled={item.subjectData.currentPeople === item.subjectData.maxPeople}>
+              <WhiteSquareButton
+                disabled={item.subjectData.currentPeople === item.subjectData.maxPeople}
+                onClick={() => onButtonClick && onButtonClick(item)}
+              >
                 신청
               </WhiteSquareButton>
             </TableBodyItem>
