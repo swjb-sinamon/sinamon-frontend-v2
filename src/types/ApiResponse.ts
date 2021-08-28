@@ -52,3 +52,42 @@ export interface CodeType {
   readonly createdAt: Date;
   readonly updatedAt: Date;
 }
+
+export interface SubjectType {
+  readonly id: number;
+  readonly name: string;
+  readonly description: string;
+  readonly type: 'SELECT_SUBJECT' | 'MAJOR_SUBJECT';
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
+  readonly subjectData: SubjectDataType;
+}
+
+export interface SubjectDataType {
+  readonly id: number;
+  readonly subjectId: number;
+  readonly applicationType: 'ORDER' | 'RANDOM';
+  readonly maxPeople: number;
+  readonly currentPeople: number;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
+}
+
+export interface ApplicationType {
+  readonly id: number;
+  readonly subjectId: number;
+  readonly subject: SubjectType;
+  readonly userId: number;
+  readonly user: {
+    readonly id: string;
+    readonly name: string;
+    readonly department: number;
+    readonly studentGrade: number;
+    readonly studentClass: number;
+    readonly studentNumber: number;
+  };
+  readonly status: 'WAITING' | 'SUCCESS' | 'NONE';
+  readonly priority: number;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Toaster } from 'react-hot-toast';
 import { HelmetProvider } from 'react-helmet-async';
+import ReactModal from 'react-modal';
 import reportWebVitals from './reportWebVitals';
 import Router from './Router';
 import GlobalStyle from './styles/Global';
@@ -9,6 +10,8 @@ import { ProfileProvider } from './hooks/useProfile';
 import { MealProvider } from './hooks/useMeal';
 import { WeatherProvider } from './hooks/useWeather';
 import { TimetableProvider } from './hooks/useTimetable';
+
+ReactModal.setAppElement('#root');
 
 ReactDOM.render(
   <React.StrictMode>

@@ -6,7 +6,8 @@ import {
   faSchool,
   faStickyNote,
   faUtensils,
-  faUsers
+  faUsers,
+  faChalkboard
 } from '@fortawesome/free-solid-svg-icons';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import React from 'react';
@@ -20,6 +21,8 @@ import AdminMainPage from '../pages/admin/AdminMainPage';
 import AdminNoticePage from '../pages/admin/AdminNoticePage';
 import AdminCodePage from '../pages/admin/AdminCodePage';
 import AdminUserPage from '../pages/admin/AdminUserPage';
+import SubjectPage from '../pages/SubjectPage';
+import ApplicationPage from '../pages/ApplicationPage';
 
 interface PageListType {
   readonly name: string;
@@ -35,6 +38,18 @@ export const PageList: PageListType[] = [
     name: '메인',
     path: '/',
     component: MainPage,
+    onlyRouter: true
+  },
+  {
+    name: '교과 신청',
+    path: '/subject',
+    component: SubjectPage,
+    icon: faChalkboard
+  },
+  {
+    name: '지원 현황',
+    path: '/application',
+    component: ApplicationPage,
     onlyRouter: true
   },
   {
