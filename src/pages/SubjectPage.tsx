@@ -37,6 +37,7 @@ const SubjectPage: React.FC = () => {
   const history = useHistory();
 
   const [api, setApi] = useState<{ data: SubjectType[]; count: number }>({ data: [], count: 0 });
+  const [canApplication, setCanApplication] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
 
   const [open, setOpen] = useState<boolean>(false);
@@ -54,6 +55,7 @@ const SubjectPage: React.FC = () => {
 
   useEffect(() => {
     fetchData(1);
+    Api.get('/application/config').then((res) => setCanApplication(res.data.data));
   }, []);
 
   const onButtonClick = (data: SubjectType) => {
@@ -105,13 +107,17 @@ const SubjectPage: React.FC = () => {
 
         <Gap gap={16} />
 
-        <Heading3>개설된 과목</Heading3>
-        <Gap gap={8} />
-        <SubjectTable data={api.data} onButtonClick={onButtonClick} />
-
-        <Gap gap={32} />
-
-        <Pagination onPageChange={fetchData} dataCount={api.count} pageLimit={10} page={page} setPage={setPage} />
+        {canApplication ? (
+          <>
+            <Heading3>개설된 과목</Heading3>
+            <Gap gap={8} />
+            <SubjectTable data={api.data} onButtonClick={onButtonClick} />
+            <Gap gap={32} />
+            <Pagination onPageChange={fetchData} dataCount={api.count} pageLimit={10} page={page} setPage={setPage} />
+          </>
+        ) : (
+          <Heading3>현재는 신청 기간이 아닙니다.</Heading3>
+        )}
       </DefaultLayout>
 
       <Modal
