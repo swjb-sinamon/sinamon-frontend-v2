@@ -93,7 +93,7 @@ const AdminSubjectPage: React.FC = () => {
 
         <ButtonGroup>
           <Button onClick={() => setOpen(true)}>과목 추가</Button>
-          <Button onClick={onCsvDownloadClick}>CSV 다운로드</Button>
+          <Button onClick={onCsvDownloadClick}>전체 데이터 다운로드</Button>
         </ButtonGroup>
 
         <Gap gap={16} />
