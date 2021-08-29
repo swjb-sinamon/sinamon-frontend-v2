@@ -9,12 +9,14 @@ import {
   TableHeaderRow
 } from '../../atoms/Table';
 import { SubjectType } from '../../types/ApiResponse';
+import { WhiteSquareButton } from '../../atoms/Button';
 
 interface SubjectTableProps {
   readonly data: SubjectType[];
+  readonly onButtonClick?: (subject: SubjectType) => void;
 }
 
-const AdminSubjectTable: React.FC<SubjectTableProps> = ({ data }) => {
+const AdminSubjectTable: React.FC<SubjectTableProps> = ({ data, onButtonClick }) => {
   return (
     <TableContainer>
       <TableHeader>
@@ -24,6 +26,7 @@ const AdminSubjectTable: React.FC<SubjectTableProps> = ({ data }) => {
           <TableHeaderItem>종류</TableHeaderItem>
           <TableHeaderItem>방법</TableHeaderItem>
           <TableHeaderItem>인원</TableHeaderItem>
+          <TableHeaderItem>추첨</TableHeaderItem>
         </TableHeaderRow>
       </TableHeader>
       <TableBody>
@@ -35,6 +38,17 @@ const AdminSubjectTable: React.FC<SubjectTableProps> = ({ data }) => {
             <TableBodyItem>{item.subjectData.applicationType === 'ORDER' ? '선착순' : '무작위추첨'}</TableBodyItem>
             <TableBodyItem>
               {item.subjectData.currentPeople} / {item.subjectData.maxPeople}
+            </TableBodyItem>
+            <TableBodyItem>
+              <WhiteSquareButton
+                disabled={
+                  item.subjectData.applicationType === 'ORDER' ||
+                  item.subjectData.currentPeople === item.subjectData.maxPeople
+                }
+                onClick={() => onButtonClick && onButtonClick(item)}
+              >
+                추첨
+              </WhiteSquareButton>
             </TableBodyItem>
           </TableBodyRow>
         ))}

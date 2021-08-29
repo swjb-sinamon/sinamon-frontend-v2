@@ -74,6 +74,19 @@ const AdminSubjectPage: React.FC = () => {
     });
   };
 
+  const onPickClick = (data: SubjectType) => {
+    // eslint-disable-next-line no-restricted-globals,no-alert
+    const accept = confirm(`정말로 ${data.name} 과목 추첨을 진행할까요?`);
+    if (!accept) return;
+
+    Api.post('/application/pick', {
+      subjectId: data.id
+    }).then(() => {
+      toast.success('추첨을 완료했습니다.');
+      fetchData(1);
+    });
+  };
+
   useEffect(() => {
     fetchData(1);
   }, []);
@@ -98,7 +111,7 @@ const AdminSubjectPage: React.FC = () => {
 
         <Gap gap={16} />
 
-        <AdminSubjectTable data={api.data} />
+        <AdminSubjectTable data={api.data} onButtonClick={onPickClick} />
 
         <Gap gap={32} />
 
