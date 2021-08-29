@@ -68,7 +68,7 @@ const AdminCodePage: React.FC = () => {
 
         <HeaderButton>
           <Button onClick={onAddClick}>인증코드 추가</Button>
-          <Button onClick={onCsvDownloadClick}>CSV 다운로드</Button>
+          <Button onClick={onCsvDownloadClick}>전체 데이터 다운로드</Button>
         </HeaderButton>
 
         <Gap gap={16} />

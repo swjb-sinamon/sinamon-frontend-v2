@@ -28,6 +28,8 @@ const StyledModal = styled(ReactModal)<{ width?: number; height?: number }>`
   }
 
   ${makeMediaQuery(Breakpoints.MD)} {
+    overflow-x: auto;
+
     position: absolute;
     top: 100%;
     transform: translate(-50%, -100%);
