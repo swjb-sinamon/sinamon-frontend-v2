@@ -24,6 +24,7 @@ import AdminUserPage from '../pages/admin/AdminUserPage';
 import SubjectPage from '../pages/SubjectPage';
 import ApplicationPage from '../pages/ApplicationPage';
 import AdminSubjectPage from '../pages/admin/AdminSubjectPage';
+import AdminApplicationPage from '../pages/admin/AdminApplicationPage';
 
 interface PageListType {
   readonly name: string;
@@ -119,6 +120,13 @@ export const AdminPageList: PageListType[] = [
     path: '/admin/subject',
     component: AdminSubjectPage,
     icon: faSchool,
+    permissions: ['admin', 'teacher']
+  },
+  {
+    name: '수강신청 관리',
+    path: '/admin/application',
+    component: AdminApplicationPage,
+    icon: faChalkboard,
     permissions: ['admin', 'teacher']
   }
 ];
