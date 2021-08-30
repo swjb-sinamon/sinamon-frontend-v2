@@ -117,7 +117,7 @@ const MainPage: React.FC = () => {
 
         <ContentHeader>
           <Heading2>이번주 시간표</Heading2>
-          <MoreButton to="/" />
+          <MoreButton to="/timetable" />
         </ContentHeader>
 
         <Gap gap={8} />
