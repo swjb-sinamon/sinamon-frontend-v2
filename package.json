@@ -1,6 +1,6 @@
 {
   "name": "sinamon-frontend-v2",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "scripts": {
     "start": "cross-env GENERATE_SOURCEMAP=true react-scripts start",
     "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
