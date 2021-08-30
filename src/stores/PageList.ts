@@ -46,13 +46,16 @@ export const PageList: PageListType[] = [
     name: '교과 신청',
     path: '/subject',
     component: SubjectPage,
-    icon: faChalkboard
+    icon: faChalkboard,
+    onlyRouter: true,
+    permissions: ['admin', 'teacher']
   },
   {
     name: '지원 현황',
     path: '/application',
     component: ApplicationPage,
-    onlyRouter: true
+    onlyRouter: true,
+    permissions: ['admin', 'teacher']
   },
   {
     name: '급식',
