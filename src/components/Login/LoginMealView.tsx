@@ -14,7 +14,7 @@ const StyledMealText = styled.span`
 `;
 
 const LoginMealView: React.FC = () => {
-  const meal = useMeal();
+  const { today } = useMeal();
 
   return (
     <>
@@ -22,7 +22,7 @@ const LoginMealView: React.FC = () => {
         오늘의 <StyledMealText>급식</StyledMealText>을 확인해보세요!
       </Heading2>
       <MealContainer>
-        <p>{meal}</p>
+        <p>{today}</p>
       </MealContainer>
     </>
   );

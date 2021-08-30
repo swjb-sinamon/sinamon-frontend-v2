@@ -53,6 +53,10 @@ const GlobalStyle: React.FC = () => {
           color: inherit;
           text-decoration: none;
         }
+
+        a:hover {
+          text-decoration: underline;
+        }
       `}
     />
   );
