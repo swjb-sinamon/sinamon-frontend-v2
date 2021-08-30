@@ -145,7 +145,7 @@ const AdminUserPage: React.FC = () => {
 
         <UserTable data={data.data} />
 
-        <Gap gap={16} />
+        <Gap gap={32} />
 
         <Pagination
           onPageChange={(pageOffset) => fetchData(pageOffset, search)}
