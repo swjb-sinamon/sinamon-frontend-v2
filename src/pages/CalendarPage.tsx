@@ -24,7 +24,7 @@ const Highlight = styled.span`
 const now = new Date();
 const DAY_NAME = ['월요일', '화요일', '수요일', '목요일', '금요일'];
 const HEADER_DAY_NAME = ['일요일', ...DAY_NAME, '토요일'];
-const MONTH_DATE = [31, 28, 31, 30, 31, 30, 31, 30, 31, 31, 30, 31];
+const MONTH_DATE = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 const CalendarPage: React.FC = () => {
   const [calendar, setCalendar] = useState<string[]>(['', '', '', '', '']);
