@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { faSchool, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import SidebarTitle from './SidebarTitle';
 import SidebarItem from './SidebarItem';
 import { Breakpoints, makeMediaQuery } from '../../styles/Breakpoint';
@@ -83,6 +84,15 @@ const Sidebar: React.FC<SidebarProps> = ({ isAdminPage }) => {
         <SidebarItem icon={faSignOutAlt} tabIndex={0} onClick={onLogoutClick}>
           로그아웃
         </SidebarItem>
+
+        <a
+          href="https://github.com/swjb-sinamon"
+          target="_blank"
+          rel="noreferrer"
+          style={{ display: 'block', textDecoration: 'none' }}
+        >
+          <SidebarItem icon={faGithub}>GitHub</SidebarItem>
+        </a>
 
         <BottomMenu>
           <Link to="/privacy">개인정보처리방침</Link> / <Link to="/tos">이용약관</Link>
