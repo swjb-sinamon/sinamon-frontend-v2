@@ -47,10 +47,10 @@ const Notice: React.FC = () => {
     <NoticeContainer>
       <NoticeTitle>공지사항</NoticeTitle>
       <NoticeContent data-tip data-for="full-notice">
-        {notice}
+        {notice || '공지사항이 없습니다.'}
       </NoticeContent>
       <ReactTooltip id="full-notice" place="bottom">
-        {notice}
+        {notice || '공지사항이 없습니다.'}
       </ReactTooltip>
     </NoticeContainer>
   );

@@ -31,10 +31,6 @@ const ControlContainer = styled.div`
   ${makeMediaQuery(Breakpoints.LG)} {
     flex-direction: column;
 
-    input {
-      width: 30rem;
-    }
-
     select {
       width: 14rem;
     }
@@ -56,8 +52,14 @@ const SelectContainer = styled.div`
   ${makeMediaQuery(Breakpoints.MD)} {
     justify-content: space-between;
     select {
-      width: 12rem;
+      width: 10rem;
     }
+  }
+`;
+
+const StyledInput = styled(Input)`
+  ${makeMediaQuery(Breakpoints.MD)} {
+    width: 100%;
   }
 `;
 
@@ -103,7 +105,7 @@ const AdminUserPage: React.FC = () => {
         <Gap gap={32} />
 
         <ControlContainer>
-          <Input
+          <StyledInput
             type="text"
             placeholder="유저 이름 검색(엔터)"
             onKeyPress={(e) => {

@@ -16,11 +16,6 @@ export interface ProfileType {
   };
 }
 
-export interface DustType {
-  readonly pm10: number;
-  readonly pm25: number;
-}
-
 export interface WeatherType {
   readonly status: Capitalize<string>;
   readonly temp: number;
