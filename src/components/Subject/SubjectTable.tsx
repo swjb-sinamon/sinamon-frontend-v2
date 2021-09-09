@@ -26,7 +26,7 @@ const SubjectTable: React.FC<SubjectTableProps> = ({ data, onButtonClick }) => {
     <TableContainer>
       <TableHeader>
         <TableHeaderRow>
-          <TableHeaderItem>이름</TableHeaderItem>
+          <TableHeaderItem>과목명</TableHeaderItem>
           <TableHeaderItem>설명</TableHeaderItem>
           <TableHeaderItem>종류</TableHeaderItem>
           <TableHeaderItem>방법</TableHeaderItem>
