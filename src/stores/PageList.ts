@@ -1,13 +1,14 @@
 import {
   faBullhorn,
   faCalendarWeek,
+  faChalkboard,
   faCog,
   faKey,
   faSchool,
   faStickyNote,
-  faUtensils,
+  faUserFriends,
   faUsers,
-  faChalkboard
+  faUtensils
 } from '@fortawesome/free-solid-svg-icons';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import React from 'react';
@@ -26,6 +27,7 @@ import ApplicationPage from '../pages/ApplicationPage';
 import AdminSubjectPage from '../pages/admin/AdminSubjectPage';
 import AdminApplicationPage from '../pages/admin/AdminApplicationPage';
 import AdminAnonymousPage from '../pages/admin/AdminAnonymousPage';
+import AdminClubManagenmentPage from '../pages/admin/AdminClubManagenmentPage';
 
 interface PageListType {
   readonly name: string;
@@ -139,5 +141,12 @@ export const AdminPageList: PageListType[] = [
     component: AdminAnonymousPage,
     icon: faStickyNote,
     permissions: ['admin', 'teacher', 'schoolunion']
+  },
+  {
+    name: '동아리원 관리',
+    path: '/admin/club',
+    component: AdminClubManagenmentPage,
+    icon: faUserFriends,
+    permissions: ['admin', 'teacher']
   }
 ];
