@@ -26,6 +26,7 @@ import SubjectPage from '../pages/SubjectPage';
 import ApplicationPage from '../pages/ApplicationPage';
 import AdminSubjectPage from '../pages/admin/AdminSubjectPage';
 import AdminApplicationPage from '../pages/admin/AdminApplicationPage';
+import AdminAnonymousPage from '../pages/admin/AdminAnonymousPage';
 import AdminClubManagenmentPage from '../pages/admin/AdminClubManagenmentPage';
 
 interface PageListType {
@@ -133,6 +134,13 @@ export const AdminPageList: PageListType[] = [
     component: AdminApplicationPage,
     icon: faChalkboard,
     permissions: ['admin', 'teacher']
+  },
+  {
+    name: '익명건의함 관리',
+    path: '/admin/anonymous',
+    component: AdminAnonymousPage,
+    icon: faStickyNote,
+    permissions: ['admin', 'teacher', 'schoolunion']
   },
   {
     name: '동아리원 관리',
