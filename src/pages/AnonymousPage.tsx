@@ -78,6 +78,7 @@ const AnonymousPage: React.FC = () => {
         <Gap gap={32} />
 
         <RoundHeading2>제목을 적어주세요</RoundHeading2>
+        <Gap gap={4} />
         <Input placeholder="제목" type="text" autoFocus {...register('title', { required: true })} width={385} />
         <InputError formError={errors.title} type="required">
           제목이 빈칸입니다.
@@ -85,20 +86,22 @@ const AnonymousPage: React.FC = () => {
         <Gap gap={16} />
 
         <RoundHeading2>내용을 입력해주세요</RoundHeading2>
+        <Gap gap={4} />
         <Textarea placeholder="내용" {...register('content', { required: true })} cols={50} rows={15} />
         <InputError formError={errors.content} type="required">
           내용이 빈칸입니다.
         </InputError>
-        <Gap gap={30} />
+        <Gap gap={16} />
 
         <Button onClick={handleSubmit(onWrittenClick)}>제출하기</Button>
-        <Gap gap={30} />
+        <Gap gap={32} />
 
         <RoundHeading2>익명건의들</RoundHeading2>
         <Gap gap={16} />
         <CardList>
           {data.map((item) => (
             <AnonymousListCard
+              id={item.id}
               key={item.id}
               title={item.title}
               contents={item.content}

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import ReactTooltip from 'react-tooltip';
 import { Gap } from '../../utils/Gap';
 import { Heading3 } from '../../atoms/Typography/Heading';
 
@@ -27,17 +28,26 @@ const Contents = styled.p`
 `;
 
 const ReplyContent = styled.p`
+  width: 100%;
+
   font-size: 14px;
   color: var(--color-subtext);
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  margin-bottom: 0.6rem;
 `;
 
 interface AnonymousListCardProps {
+  readonly id: number;
   readonly title: string;
   readonly contents: string;
   readonly reply: string;
 }
 
-const AnonymousListCard: React.FC<AnonymousListCardProps> = ({ title, contents, reply }) => {
+const AnonymousListCard: React.FC<AnonymousListCardProps> = ({ id, title, contents, reply }) => {
   return (
     <Box>
       <div>
@@ -47,7 +57,12 @@ const AnonymousListCard: React.FC<AnonymousListCardProps> = ({ title, contents, 
         <Contents>{contents}</Contents>
       </div>
       <div>
-        <ReplyContent>→ {reply}</ReplyContent>
+        <ReplyContent data-tip data-for={`full-reply-${id}`}>
+          → {reply}
+        </ReplyContent>
+        <ReactTooltip id={`full-reply-${id}`} place="right">
+          {reply}
+        </ReactTooltip>
       </div>
     </Box>
   );
