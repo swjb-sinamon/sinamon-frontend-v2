@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Helmet } from 'react-helmet-async';
+import styled from '@emotion/styled';
 import { Heading2, RoundHeading2 } from '../atoms/Typography/Heading';
 import { Gap } from '../utils/Gap';
 import AnonymousListCard from '../components/AnonymousListCard';
@@ -13,6 +14,24 @@ import { ApiAnonymous } from '../types/ApiResponse';
 import DefaultLayout from '../layouts/DefaultLayout';
 import { Textarea } from '../atoms/Form/Textarea';
 import Emoji from '../atoms/Emoji';
+
+const CardList = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  & > * {
+    margin-right: 16px;
+    margin-bottom: 16px;
+  }
+
+  & > *:last-child {
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+`;
 
 interface Anonymous {
   readonly title: string;
@@ -77,15 +96,16 @@ const AnonymousPage: React.FC = () => {
 
         <RoundHeading2>익명건의들</RoundHeading2>
         <Gap gap={16} />
-        {data.map((item) => {
-          return (
+        <CardList>
+          {data.map((item) => (
             <AnonymousListCard
+              key={item.id}
               title={item.title}
               contents={item.content}
               reply={item.reply[0] ? item.reply[0].content : '답변 대기 중...'}
             />
-          );
-        })}
+          ))}
+        </CardList>
       </DefaultLayout>
     </>
   );
