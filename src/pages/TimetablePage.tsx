@@ -79,8 +79,7 @@ const TimetablePage: React.FC = () => {
                   // eslint-disable-next-line react/no-array-index-key
                   <React.Fragment key={`timeitem-${index}${j}`}>
                     {time.subject}
-                    <br />
-                    {time.teacher}
+                    <br />({time.teacher}*)
                     <Gap gap={8} />
                   </React.Fragment>
                 ))}
