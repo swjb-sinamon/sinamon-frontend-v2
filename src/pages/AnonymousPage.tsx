@@ -20,32 +20,31 @@ interface Anonymous {
 }
 
 const AnonymousPage: React.FC = () => {
-  const [apiWritten, setApiWritten] = useState<ApiAnonymous[]>([]);
+  const [data, setData] = useState<ApiAnonymous[]>([]);
   const {
     register,
     formState: { errors },
     handleSubmit
   } = useForm<Anonymous>();
 
-  const onWrittenClick: SubmitHandler<Anonymous> = async (data) => {
-    const { title, content } = data;
-    if (title.trim() === '' || content.trim() === '') {
-      toast.error('제목 또는 내용이 빈칸입니다');
-      return;
-    }
+  useEffect(() => fetchData(), []);
+
+  const fetchData = () => {
+    Api.get('/anonymous/').then((res) => {
+      setData(res.data.data);
+    });
+  };
+
+  const onWrittenClick: SubmitHandler<Anonymous> = async (_data) => {
+    const { title, content } = _data;
     await Api.post('/anonymous', {
       title,
       content
     });
-    toast.success('제출완료!');
-    window.location.reload();
-  };
 
-  useEffect(() => {
-    Api.get('/anonymous/').then((res) => {
-      setApiWritten(res.data.data);
-    });
-  }, []);
+    toast.success('익명 건의가 등록되었습니다.');
+    fetchData();
+  };
 
   return (
     <>
@@ -78,7 +77,7 @@ const AnonymousPage: React.FC = () => {
 
         <RoundHeading2>익명건의들</RoundHeading2>
         <Gap gap={16} />
-        {apiWritten.map((item) => {
+        {data.map((item) => {
           return (
             <AnonymousListCard
               title={item.title}
