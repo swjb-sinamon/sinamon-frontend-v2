@@ -57,7 +57,6 @@ const AnonymousPage: React.FC = () => {
         <Heading2>
           <Emoji label="mailbox" symbol="📫" /> 익명 건의함
         </Heading2>
-
         <Gap gap={32} />
 
         <RoundHeading2>제목을 적어주세요</RoundHeading2>
@@ -65,7 +64,7 @@ const AnonymousPage: React.FC = () => {
         <InputError formError={errors.title} type="required">
           제목이 빈칸입니다.
         </InputError>
-        <Gap gap={10} />
+        <Gap gap={16} />
 
         <RoundHeading2>내용을 입력해주세요</RoundHeading2>
         <Textarea placeholder="내용" {...register('content', { required: true })} cols={50} rows={15} />
@@ -73,11 +72,20 @@ const AnonymousPage: React.FC = () => {
           내용이 빈칸입니다.
         </InputError>
         <Gap gap={30} />
+
         <Button onClick={handleSubmit(onWrittenClick)}>제출하기</Button>
         <Gap gap={30} />
-        <RoundHeading2>익명리스트</RoundHeading2>
+
+        <RoundHeading2>익명건의들</RoundHeading2>
+        <Gap gap={16} />
         {apiWritten.map((item) => {
-          return <AnonymousListCard title={item.title} contents={item.content} />;
+          return (
+            <AnonymousListCard
+              title={item.title}
+              contents={item.content}
+              reply={item.reply[0] ? item.reply[0].content : '답변 대기 중...'}
+            />
+          );
         })}
       </DefaultLayout>
     </>

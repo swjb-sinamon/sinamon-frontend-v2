@@ -4,6 +4,10 @@ import { Gap } from '../../utils/Gap';
 import { Heading3 } from '../../atoms/Typography/Heading';
 
 const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   width: 200px;
   height: 240px;
 
@@ -22,18 +26,29 @@ const Contents = styled.p`
   line-height: 160%;
 `;
 
+const ReplyContent = styled.p`
+  font-size: 14px;
+  color: var(--color-subtext);
+`;
+
 interface AnonymousListCardProps {
   readonly title: string;
   readonly contents: string;
+  readonly reply: string;
 }
 
-const AnonymousListCard: React.FC<AnonymousListCardProps> = ({ title, contents }) => {
+const AnonymousListCard: React.FC<AnonymousListCardProps> = ({ title, contents, reply }) => {
   return (
     <Box>
-      <Title>{title} </Title>
-      <Gap gap={16} />
+      <div>
+        <Title>{title} </Title>
+        <Gap gap={16} />
 
-      <Contents>{contents}</Contents>
+        <Contents>{contents}</Contents>
+      </div>
+      <div>
+        <ReplyContent>→ {reply}</ReplyContent>
+      </div>
     </Box>
   );
 };
