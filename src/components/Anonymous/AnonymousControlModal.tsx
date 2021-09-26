@@ -80,15 +80,15 @@ const AnonymousControlModal: React.FC<AnonymousControlModalProps> = ({ id, open,
     <Modal name="anonymousControlModal" title="익명건의함 답변" open={open} setOpen={setOpen} height={440}>
       <StyledTextarea
         rows={12}
-        placeholder="최대 400자"
+        placeholder="최대 200자"
         autoFocus
-        {...register('reply', { required: true, maxLength: 400 })}
+        {...register('reply', { required: true, maxLength: 200 })}
       />
       <InputError formError={errors.reply} type="required">
         칸이 비어있습니다.
       </InputError>
       <InputError formError={errors.reply} type="maxLength">
-        400자가 넘습니다.
+        200자가 넘습니다.
       </InputError>
 
       <Gap gap={16} />
