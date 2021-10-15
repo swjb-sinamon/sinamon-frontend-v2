@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import { Breakpoints, makeMediaQuery } from '../styles/Breakpoint';
 import { Heading1, Heading2 } from '../atoms/Typography/Heading';
@@ -48,6 +48,15 @@ const Container = styled.div`
   }
 `;
 
+const ButtonList = styled.div`
+  & > * {
+    margin-right: 16px;
+  }
+  & > *:last-child {
+    margin-right: 0;
+  }
+`;
+
 const ToSPage: React.FC = () => {
   const history = useHistory();
 
@@ -59,9 +68,14 @@ const ToSPage: React.FC = () => {
 
       <Container>
         <Gap gap={24} />
-        <Button fontSize="14" onClick={() => history.goBack()}>
-          <FontAwesomeIcon icon={faArrowLeft} /> 뒤로가기
-        </Button>
+        <ButtonList>
+          <Button fontSize="14" onClick={() => history.goBack()}>
+            <FontAwesomeIcon icon={faArrowLeft} /> 뒤로가기
+          </Button>
+          <Button fontSize="14" onClick={() => history.push('/contributor')}>
+            <FontAwesomeIcon icon={faUsers} /> 만든 사람들
+          </Button>
+        </ButtonList>
         <Gap gap={24} />
 
         <Title>수정과</Title>
