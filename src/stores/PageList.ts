@@ -28,6 +28,7 @@ import AdminSubjectPage from '../pages/admin/AdminSubjectPage';
 import AdminApplicationPage from '../pages/admin/AdminApplicationPage';
 import AdminAnonymousPage from '../pages/admin/AdminAnonymousPage';
 import AdminClubManagenmentPage from '../pages/admin/AdminClubManagenmentPage';
+import ContributorPage from '../pages/ContributorPage';
 
 interface PageListType {
   readonly name: string;
@@ -85,6 +86,12 @@ export const PageList: PageListType[] = [
     name: '내 계정',
     path: '/me',
     component: MyPage,
+    onlyRouter: true
+  },
+  {
+    name: '만든 사람들',
+    path: '/contributor',
+    component: ContributorPage,
     onlyRouter: true
   }
 ];
