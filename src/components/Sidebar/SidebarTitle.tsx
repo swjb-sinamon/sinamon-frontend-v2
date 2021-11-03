@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useMemo } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,7 +6,6 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import Logo from '../../assets/logo.png';
 import { Gap } from '../../utils/Gap';
 import { Breakpoints, makeMediaQuery } from '../../styles/Breakpoint';
-import useWindowSize from '../../hooks/useWIndowSize';
 import { useProfile } from '../../hooks/useProfile';
 import useDesktop from '../../hooks/useDesktop';
 
