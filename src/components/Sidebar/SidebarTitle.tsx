@@ -8,6 +8,7 @@ import { Gap } from '../../utils/Gap';
 import { Breakpoints, makeMediaQuery } from '../../styles/Breakpoint';
 import useWindowSize from '../../hooks/useWIndowSize';
 import { useProfile } from '../../hooks/useProfile';
+import useDesktop from '../../hooks/useDesktop';
 
 const TitleItem = styled.div`
   width: 100%;
@@ -106,8 +107,7 @@ interface SidebarTitleProps {
 }
 
 const SidebarTitle: React.FC<SidebarTitleProps> = ({ setOpen }) => {
-  const [width] = useWindowSize();
-  const isDesktop = useMemo(() => width > Number(Breakpoints.MD.replace('px', '')), [width]);
+  const isDesktop = useDesktop();
   const profile = useProfile();
   const profileText = isDesktop ? (
     `${profile?.studentGrade}학년 ${profile?.studentClass}반 ${profile?.name} 님`
