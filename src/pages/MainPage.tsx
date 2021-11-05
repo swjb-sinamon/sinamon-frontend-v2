@@ -123,12 +123,10 @@ const MainPage: React.FC = () => {
         <Gap gap={8} />
 
         <TimetableList>
-          {timetable.map((todayTime, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <TimetableCard key={`timetable-${index}`} day={timetableDay[index]}>
+          {timetable.map((todayTime, i) => (
+            <TimetableCard key={`timetable-${i}`} day={timetableDay[i]}>
               {todayTime.map((time, j) => (
-                // eslint-disable-next-line react/no-array-index-key
-                <React.Fragment key={`timeitem-${index}${j}`}>
+                <React.Fragment key={`timeitem-${i}${j}`}>
                   {time.subject}
                   <br />
                 </React.Fragment>

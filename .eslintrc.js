@@ -15,6 +15,7 @@ module.exports = {
     'react/prop-types': 'off',
     'react/jsx-one-expression-per-line': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'react/no-array-index-key': 'off',
 
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
